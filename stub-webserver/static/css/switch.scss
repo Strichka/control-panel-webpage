@@ -1,0 +1,69 @@
+.switchesPanel{
+grid-template-columns: 1fr 1fr;
+grid-template-rows: auto;
+display: grid;
+
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slideSwitch */
+  .slideSwitch {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(255, 255, 255);
+    border: solid 5px black;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slideSwitch:before {
+    position: absolute;
+    content: "";
+    height: 30px;
+    width: 30px;
+    left: -4px;
+    bottom: -3px;
+    background-color: rgb(14, 255, 6);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slideSwitch {
+    background-color: #18e218;
+  }
+  
+  input:focus + .slideSwitch {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slideSwitch:before {
+    -webkit-transform: translateX(27.5px);
+    -ms-transform: translateX(27.5px);
+    transform: translateX(27.5px);
+  }
+  
+  /* Rounded slideSwitchs */
+  .slideSwitch.round {
+    border-radius: 34px;
+  }
+  
+  .slideSwitch.round:before {
+    border-radius: 50%;
+  }

@@ -1,0 +1,40 @@
+body {
+  background-color: gray;
+}
+
+:is(main, header) {
+  background-color: white;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+header button {
+  width: 100px;
+  height: 100px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border-radius: 15px;
+}
+
+@media (max-width: 599px) {
+  header button {
+    width: 20vw;
+    height: 20vw;
+  }
+}
+
+header img {
+  max-width: 50vw;
+}
+/*# sourceMappingURL=Style.css.map */
