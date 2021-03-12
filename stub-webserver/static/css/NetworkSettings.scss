@@ -1,8 +1,63 @@
 .NetworkSetting{
     display: flex;
+    flex-direction: column;
+    padding:5px;
     align-items: center;
-    justify-content: space-between;
-    textarea{
+    justify-content: center;
+    height: 60px;
+    span{
+        
+        
         
     }
+    input{
+        
+        
+        width: 85%;
+        border-radius: 15px;
+        border: 1px solid grey;
+        height: 4ch;
+        resize: none;
+        padding-left: 15px;
+        padding-right: 15px;
+        &:focus{
+            box-shadow: 1px 1px; 
+        }
+    }
+
+}
+.NetworkSettingSubmit{
+    border-radius: 15px;
+    width: 85%;
+    padding: 0 15px 0 15px !important;
+    
+    height: 4ch;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgreen;
+    border: 1px solid grey;
+
+    &:hover{
+        span{
+            color: lightgreen;
+        }
+        box-shadow: 1px 1px;
+        background: rgb(255, 255, 255) !important;
+    }
+    span{
+        color: white;
+    }
+
+}
+
+
+
+
+
+//remove
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

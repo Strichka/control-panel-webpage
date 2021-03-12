@@ -1,11 +1,18 @@
 .SliderSection {
   padding-top: 1rem;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: auto;
-      grid-template-rows: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 input {
@@ -30,11 +37,12 @@ input {
   border-radius: 10px;
   background-color: white;
   overflow: visible;
-  border: 2px solid black;
+  border: 0.1px solid black;
   cursor: pointer;
 }
 
 .slidecontainer {
+  width: 100%;
   -webkit-transform: translateY(-10px);
           transform: translateY(-10px);
   display: -webkit-box;
@@ -49,5 +57,14 @@ input {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.slidecontainer #diodsSlider {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-height: 3ch;
+  font-size: larger;
+  background-color: white;
 }
 /*# sourceMappingURL=Sliders.css.map */

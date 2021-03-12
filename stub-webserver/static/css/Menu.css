@@ -44,14 +44,10 @@ body {
 
 .dropdown [data-toggle=dropdown] {
   display: block;
-  color: white;
-  background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
-  background-size: 1800% 1800%;
-  -webkit-animation: rainbow 18s ease infinite;
-  -z-animation: rainbow 18s ease infinite;
-  animation: rainbow 18s ease infinite;
-  -webkit-box-shadow: 0 1px 0 #d65548 inset, 0 -1px 0 #962d22 inset;
-  box-shadow: 0 1px 0 #d65548 inset, 0 -1px 0 #962d22 inset;
+  color: black;
+  background: white;
+  -webkit-box-shadow: 0 1px 0 #a7a7a7 inset, 0 -1px 0 #000000 inset;
+  box-shadow: 0 1px 0 #a7a7a7 inset, 0 -1px 0 #000000 inset;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
   padding: 10px;
 }
@@ -61,7 +57,7 @@ body {
   display: block;
   content: "▼";
   font-size: 0.7em;
-  color: #fff;
+  color: #9c9c9c;
   top: 13px;
   right: 10px;
   -webkit-transform: rotate(0deg);

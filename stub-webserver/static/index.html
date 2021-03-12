@@ -36,7 +36,7 @@
                 <p>Ширина: <span class="SlideOut"></span></p>
               </div>
               <div class="slidecontainer">
-                <input  type="range" id="diodsSlider" min="0" max="65535" value="50" class="slider" name="rangeInput">
+                <input  type="number" step="1" id="diodsSlider" min="0" max="65535" maxlength="5" value="50" class="slider" name="rangeInput">
                 <p>Количество светодиодов: <span class="SlideOut"></span></p>
               </div>
             </div> 
@@ -92,11 +92,11 @@
                     <input type="checkbox" />
                     <a href="#" data-toggle="dropdown">Сеть</a>
                     <ul class="dropdown-menu">
-                      <li><div class='NetworkSetting'>Имя сети<textarea></textarea></div> </li>
-                      <li><div class='NetworkSetting'>Пароль сети<textarea></textarea></div> </li>
-                      <li><div class='NetworkSetting'>Имя локальной сети<textarea></textarea></div> </li>
-                      <li><div class='NetworkSetting'>Пароль локальной сети<textarea></textarea></div> </li>
-                      <li><a href="#">Сохранить</a></li>
+                      <li><div class='NetworkSetting'><span>Имя сети</span><input type = "text" id="NetName" name=NetConf></input></div> </li>
+                      <li><div class='NetworkSetting'><span>Пароль сети</span><input type = "password" id="NetPass" name=NetConf></input></div> </li>
+                      <li><div class='NetworkSetting'><span>Имя локальной сети</span><input type = "text" id="LocName" name=NetConf></input></div> </li>
+                      <li><div class='NetworkSetting'><span>Пароль локальной сети</span><input type = "password" id="LocPass" name=NetConf></input></div> </li>
+                      <li><div class='NetworkSetting'><div class='NetworkSettingSubmit'href="#" id="NetSubmit"><span>Сохранить</span></div></div></li>
                     </ul>
                   </li>
                   <li class="dropdown">
@@ -125,5 +125,6 @@
     </main>
     <script src=/static/js/Popup.js></script>
     <script src=/static/js/Sliders.js></script>
+    <script src=/static/js/NetworkMenu.js></script>
 </body>
 </html>

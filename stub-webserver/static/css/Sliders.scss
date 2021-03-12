@@ -1,9 +1,9 @@
 .SliderSection{
     padding-top: 1rem;
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    
+    display:flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
 }
 
 
@@ -32,15 +32,23 @@ input{
     border-radius: 10px;
     background-color: hsl(0, 0%, 100%);
     overflow: visible;
-    border: 2px solid black;
+    border: 0.1px solid black;
     cursor: pointer;
   }
   
   .slidecontainer {
+    width: 100%;
     transform: translateY(-10px);
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
-
+    #diodsSlider{
+      width: fit-content;
+      min-height: 3ch;
+      font-size: larger;
+      background-color: white;
+      
+    }
   }
+  
