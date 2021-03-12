@@ -1,11 +1,39 @@
-
-let itr = document.querySelectorAll('input[name=rangeInput]')
+let sliders = document.querySelectorAll('input[name=rangeInput]')
 var output = document.querySelectorAll("span.SlideOut");
 let Dropmenu = document.getElementById("Menu1")
 
+var sliderSettings;
 
-let arrS=[];
-itr.forEach(element => {
+window.addEventListener('load', (event) => {
+    console.log('page is fully loaded2');
+
+
+    var GETsliders = new XMLHttpRequest();
+    GETsliders.open("GET", '/led/config', true);
+    GETsliders.send();
+
+    GETsliders.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText)
+            sliderSettings = JSON.parse(this.responseText)
+
+            sliders[0].value = sliderSettings.brightness;
+            sliders[1].value = sliderSettings.speed;
+            sliders[2].value = sliderSettings.width;
+            sliders[3].value = sliderSettings.led_count;
+            sliders.forEach((element, i) => {
+                output[i].innerHTML = element.value;
+            });
+
+        }
+    }
+
+
+
+
+});
+let arrS = [];
+sliders.forEach(element => {
     arrS.push(document.createElement("style"))
 });
 
@@ -22,18 +50,34 @@ console.log(output);
 
 
 
-itr.forEach( (element,i) => {
+sliders.forEach((element, i) => {
     element.addEventListener("input", () => {
-        
-        arrS[i].textContent = ` .slidecontainer:nth-child(${i+1}) .slider::-webkit-slider-thumb{background-color: hsl(${100-(element.value/(element.max/100))}, 100%, 50%)} `
+
+        arrS[i].textContent = ` .slidecontainer:nth-child(${i + 1}) .slider::-webkit-slider-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)} `
         output[i].innerHTML = element.value;
-        
-      })
-      
-      
+
+        var changeData = new XMLHttpRequest();
+        changeData.open("PATCH", '/led/config', true);
+
+
+        let val = sliderSettings;
+        if (i < 3) {
+            val[Object.keys(sliderSettings)[i + 1]] = parseInt(element.value, 10);
+        }
+        else {
+            val[Object.keys(sliderSettings)[i + 2]] = parseInt(element.value, 10);
+        }
+        console.log(val);
+        changeData.send(JSON.stringify(val));
+
+
+
+
+    })
+
+
 });
 
 
-console.log(itr);
-    
-  
+
+

@@ -8,6 +8,11 @@
       grid-template-rows: auto;
 }
 
+input {
+  outline: none !important;
+  outline-style: none;
+}
+
 .slider {
   width: 80%;
   margin-left: auto;

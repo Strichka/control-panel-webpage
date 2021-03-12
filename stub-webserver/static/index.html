@@ -5,38 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="/public/css/Style.css" rel="stylesheet" >
-    <link href="/public/css/Sliders.css" rel="stylesheet" >
-    <link href="/public/css/switch.css" rel="stylesheet" >
-    <link href="/public/css/Menu.css" rel="stylesheet" >
-    <link href="/public/css/NetworkSettings.css" rel="stylesheet" >
-    <link href="/public/css/ModeMenu.css" rel="stylesheet" >
-    <link href="/public/css/popup.css" rel="stylesheet" >
+    <link href="/static/css/Style.css" rel="stylesheet" >
+    <link href="/static/css/Sliders.css" rel="stylesheet" >
+    <link href="/static/css/switch.css" rel="stylesheet" >
+    <link href="/static/css/Menu.css" rel="stylesheet" >
+    <link href="/static/css/NetworkSettings.css" rel="stylesheet" >
+    <link href="/static/css/ModeMenu.css" rel="stylesheet" >
+    <link href="/static/css/popup.css" rel="stylesheet" >
 </head>
 <body id='Body'>
     <header>
-        <img src='/public/media/Logo1.jpg'>
-        <button>menu</button>
+        <img src='/static/media/logo.png'>
+        
     </header>
     <main>
         <div class='SliderSection'>
             
             <div class="slidecontainer">
-                <input type="range" min="0" max="255" value="50" class="slider" name="rangeInput">
+                <input type="range" id="brightnesSlider" min="0" max="255" value="50" class="slider" name="rangeInput">
                 <p>Яркость: <span class="SlideOut"></span></p>
               </div>
 
               <div class="slidecontainer">
-                <input  type="range" min="0" max="65535" value="50" class="slider" name="rangeInput">
+                <input  type="range" id="speedSlider" min="0" max="65535" value="50" class="slider" name="rangeInput">
                 <p>Скорость: <span class="SlideOut"></span></p>
               </div>
 
               <div class="slidecontainer">
-                <input  type="range" min="0" max="65535" value="50" class="slider" name="rangeInput">
+                <input  type="range" min="0" id="widthSlider"max="65535" value="50" class="slider" name="rangeInput">
                 <p>Ширина: <span class="SlideOut"></span></p>
               </div>
               <div class="slidecontainer">
-                <input  type="range" min="0" max="65535" value="50" class="slider" name="rangeInput">
+                <input  type="range" id="diodsSlider" min="0" max="65535" value="50" class="slider" name="rangeInput">
                 <p>Количество светодиодов: <span class="SlideOut"></span></p>
               </div>
             </div> 
@@ -123,7 +123,7 @@
               
 
     </main>
-    <script src=/public/js/Popup.js></script>
-    <script src=/public/js/Sliders.js></script>
+    <script src=/static/js/Popup.js></script>
+    <script src=/static/js/Sliders.js></script>
 </body>
 </html>
