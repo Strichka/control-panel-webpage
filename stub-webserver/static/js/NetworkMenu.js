@@ -1,10 +1,6 @@
 let NetConf = document.querySelectorAll('input[name=NetConf]');
 let NetSubmitButton = document.getElementById("NetSubmit");
-var NetResponse;
-var popup;
-var isValidData;
-//var BadTextAlert = 
-var BadTextArray = [];
+
 
 window.addEventListener('load', (event) => {
     console.log('NetConf loaded');
@@ -47,36 +43,15 @@ NetSubmitButton.addEventListener("click",(event) => {
     if(isValidData){
     SETnetConfig.send(JSON.stringify(NetConfObj));
     console.log("sent cfg")
-    var PINGserver = new XMLHttpRequest();
-    PINGserver.open("GET", '/ping', true);
-    PINGserver.send();
-
-    LoadingFunction();
-
-    PINGserver.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            var pong = JSON.parse(this.responseText);
-            if(pong.pong=== true){
-            document.location.reload();
-        }
-        }
     
-    };
+    PingServer();
     }
     else{
         alert("Use ASCII");
     }
 });
 
-var PreloadPopUp = () =>{
-    body = document.getElementById("Body")
-    popup = document.createElement("div");
-    popup.innerHTML = "<div class='textbox LoadPopUp'> Перезагрузка! <img src='/static/media/Loading.gif' ></div>";
-    popup.className = "Popup";
-}
-var LoadingFunction = () =>{
-    document.body.appendChild(popup);
-}
+
 NetConf.forEach((element,i) => {
     element.addEventListener("input",() =>{
         if(!isASCII(element.value)){
@@ -101,7 +76,3 @@ NetConf.forEach((element,i) => {
 });
 
 
-
-function isASCII(str) {
-    return /^[\x00-\x7F]*$/.test(str);
-}

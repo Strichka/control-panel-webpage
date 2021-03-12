@@ -1,0 +1,21 @@
+.infoTable{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: row dense;
+                    
+    
+    min-height: fit-content;
+    div{
+        padding:2px;
+        border: 1px solid;
+        grid-column-start: 1;
+    }
+    #infoline{
+        grid-column-start: 2;
+
+    }
+}
+#infoBox{
+    min-height: 200px;
+    padding:0;
+}

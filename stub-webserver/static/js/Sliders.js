@@ -1,5 +1,7 @@
+ 
 let sliders = document.querySelectorAll('input[name=rangeInput]');
-
+let PLUSbtn=document.getElementById("PLUSbtn");
+let MINUSbtn=document.getElementById("MINUSbtn");
 
 var output = document.querySelectorAll("span.SlideOut");
 let Dropmenu = document.getElementById("Menu1");
@@ -84,19 +86,23 @@ let ChangeSlideData=((element,i) => {
 
 });
 //
-function enforce_maxlength(event) {
-    var t = event.target;
+PLUSbtn.addEventListener("mousedown",(event) => {
+    sliders[3].value = parseInt(sliders[3].value)+500;
+    var event = new Event('input', {});
     
-    if (t.hasAttribute('max') && parseInt(t.getAttribute('max'))< parseInt(t.value)) {
-      t.value = parseInt(t.getAttribute('max'));
-    
-      console.log("sliced data");
+    sliders[3].dispatchEvent(event);
+});
+MINUSbtn.addEventListener("mousedown",(event) => {
+        sliders[3].value = parseInt(sliders[3].value)-500;
+    var event = new Event('input', {});
+    sliders[3].dispatchEvent(event);
+ 
     }
-  }
-  
-  // Global Listener for anything with an maxlength attribute.
-  // I put the listener on the body, put it on whatever.
-  
+);
+ 
+
+let checker=MINUSbtn.addEventListener("mousedown",(event) => {return true;});
+
 
 
 

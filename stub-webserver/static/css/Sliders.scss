@@ -37,6 +37,7 @@ input{
   }
   
   .slidecontainer {
+
     width: 100%;
     transform: translateY(-10px);
     display: flex;
@@ -50,5 +51,23 @@ input{
       background-color: white;
       
     }
+    
+  }
+.LEDbtn{
+  border-radius: 100%;
+  width:40px;
+  height: 40px;
+  font-size: large;
+  background-color: lightgreen;
+  &:focus{
+    outline: none !important;
   }
   
+}
+
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{
+   -webkit-appearance:initial;
+}

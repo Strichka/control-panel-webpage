@@ -67,4 +67,21 @@ input {
   font-size: larger;
   background-color: white;
 }
+
+.LEDbtn {
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  font-size: large;
+  background-color: lightgreen;
+}
+
+.LEDbtn:focus {
+  outline: none !important;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: initial;
+}
 /*# sourceMappingURL=Sliders.css.map */

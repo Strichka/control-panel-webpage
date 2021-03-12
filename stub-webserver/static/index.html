@@ -1,130 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="/static/css/Style.css" rel="stylesheet" >
-    <link href="/static/css/Sliders.css" rel="stylesheet" >
-    <link href="/static/css/switch.css" rel="stylesheet" >
-    <link href="/static/css/Menu.css" rel="stylesheet" >
-    <link href="/static/css/NetworkSettings.css" rel="stylesheet" >
-    <link href="/static/css/ModeMenu.css" rel="stylesheet" >
-    <link href="/static/css/popup.css" rel="stylesheet" >
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="/static/css/Style.css" rel="stylesheet">
+  <link href="/static/css/Sliders.css" rel="stylesheet">
+  <link href="/static/css/switch.css" rel="stylesheet">
+  <link href="/static/css/Menu.css" rel="stylesheet">
+  <link href="/static/css/NetworkSettings.css" rel="stylesheet">
+  <link href="/static/css/ModeMenu.css" rel="stylesheet">
+  <link href="/static/css/popup.css" rel="stylesheet">
+  <link href="/static/css/info.css" rel="stylesheet">
 </head>
+
 <body id='Body'>
-    <header>
-        <img src='/static/media/logo.png'>
-        
-    </header>
-    <main>
-        <div class='SliderSection'>
-            
-            <div class="slidecontainer">
-                <input type="range" id="brightnesSlider" min="0" max="255" value="50" class="slider" name="rangeInput">
-                <p>Яркость: <span class="SlideOut"></span></p>
+  <header>
+    <img src='/static/media/logo.png'>
+
+  </header>
+  <main>
+    <div class='SliderSection'>
+
+      <div class="slidecontainer">
+        <input type="range" id="brightnesSlider" min="0" max="255" value="50" class="slider" name="rangeInput">
+        <p>Яркость: <span class="SlideOut"></span></p>
+      </div>
+
+      <div class="slidecontainer">
+        <input type="range" id="speedSlider" min="0" max="65535" value="50" class="slider" name="rangeInput">
+        <p>Скорость: <span class="SlideOut"></span></p>
+      </div>
+
+      <div class="slidecontainer">
+        <input type="range" min="0" id="widthSlider" max="65535" value="50" class="slider" name="rangeInput">
+        <p>Ширина: <span class="SlideOut"></span></p>
+      </div>
+      <div class="slidecontainer">
+        <div>
+          <button class="LEDbtn" id=MINUSbtn>-</button>
+          <input type="number" step="1" id="diodsSlider" min="0" max="65535" maxlength="5" value="50" class="slider"
+            name="rangeInput">
+          <button class="LEDbtn" id=PLUSbtn>+</button>
+
+        </div>
+        <p>Количество светодиодов: <span class="SlideOut"></span></p>
+      </div>
+    </div>
+    <div class="container">
+      <!--<h1 class="title">Dropdown Menu</h1>-->
+      <ul>
+
+
+
+        <li class="dropdown">
+          <input type="checkbox" />
+          <a href="#" data-toggle="dropdown">Режимы</a>
+          <ul class="dropdown-menu">
+            <li class="ModeSelector"><a href="#">Режим 1</a></li>
+            <li class="ModeSelector"><a href="#">Режим 2</a></li>
+            <li class="ModeSelector"><a href="#">Режим 3</a></li>
+
+          </ul>
+        </li>
+
+
+
+
+
+        <li class="dropdown">
+          <input id="Menu1" type="checkbox" />
+          <a href="#" data-toggle="dropdown">Опции</a>
+          <ul class="dropdown-menu">
+
+
+
+
+            <li><a href="#">Опции</a></li>
+            <li>
+
+              <div class="switchesPanel">
+                Опция 1
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slideSwitch round"></span>
+                </label>
+                Опция 2
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slideSwitch round"></span>
+                </label>
+
               </div>
-
-              <div class="slidecontainer">
-                <input  type="range" id="speedSlider" min="0" max="65535" value="50" class="slider" name="rangeInput">
-                <p>Скорость: <span class="SlideOut"></span></p>
+            </li>
+            <li> </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <input type="checkbox" />
+          <a href="#" data-toggle="dropdown">Сеть</a>
+          <ul class="dropdown-menu">
+            <li>
+              <div class='NetworkSetting'><span>Имя сети</span><input type="text" id="NetName" name=NetConf></input>
               </div>
-
-              <div class="slidecontainer">
-                <input  type="range" min="0" id="widthSlider"max="65535" value="50" class="slider" name="rangeInput">
-                <p>Ширина: <span class="SlideOut"></span></p>
+            </li>
+            <li>
+              <div class='NetworkSetting'><span>Пароль сети</span><input type="password" id="NetPass"
+                  name=NetConf></input></div>
+            </li>
+            <li>
+              <div class='NetworkSetting'><span>Имя локальной сети</span><input type="text" id="LocName"
+                  name=NetConf></input></div>
+            </li>
+            <li>
+              <div class='NetworkSetting'><span>Пароль локальной сети</span><input type="password" id="LocPass"
+                  name=NetConf></input></div>
+            </li>
+            <li>
+              <div class='NetworkSetting'>
+                <div class='NetworkSettingSubmit' href="#" id="NetSubmit"><span>Сохранить</span></div>
               </div>
-              <div class="slidecontainer">
-                <input  type="number" step="1" id="diodsSlider" min="0" max="65535" maxlength="5" value="50" class="slider" name="rangeInput">
-                <p>Количество светодиодов: <span class="SlideOut"></span></p>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <input type="checkbox" />
+          <a href="#" data-toggle="dropdown">Обновления</a>
+          <ul class="dropdown-menu">
+            <li>
+              <div class='NetworkSetting'>
+                <div class='NetworkSettingSubmit' id="UpdatePop"><span>Проверить обновления</span></div>
               </div>
-            </div> 
-              <div class="container">
-                <!--<h1 class="title">Dropdown Menu</h1>-->
-                <ul>
+            </li>
+            <li><a class='NetworkSetting' id="infoBox">
+                <div class="infoTable" id="infoTab">
+                  <div>Firmware name</div>
+                  <div>Version</div>
+                  <div>AP mode</div>
+                  <div>STA mode</div>
+                  <div>AP mac</div>
+                  <div>STA mac</div>
+                  <div>STA ip</div>
+                </div>
+              </a></li>
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <input type="checkbox" />
+          <a href="#" data-toggle="dropdown">Информация</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </li>
+      </ul>
 
 
-
-                    <li class="dropdown">
-                        <input type="checkbox" />
-                        <a href="#" data-toggle="dropdown">Режимы</a>
-                        <ul class="dropdown-menu">
-                          <li class="ModeSelector"><a href="#">Режим 1</a></li>
-                          <li class="ModeSelector"><a href="#">Режим 2</a></li>
-                          <li class="ModeSelector"><a href="#">Режим 3</a></li>
-                          
-                        </ul>
-                      </li>
-
-
-
-
-
-                  <li class="dropdown">
-                    <input id="Menu1" type="checkbox" />
-                    <a href="#" data-toggle="dropdown">Опции</a>
-                    <ul class="dropdown-menu">
-
-
-                        
-
-                      <li><a href="#">Опции</a></li>
-                       <li>
-                           
-                        <div class="switchesPanel">
-                            Опция 1
-                        <label class="switch">
-                        <input type="checkbox">
-                        <span class="slideSwitch round"></span>
-                        </label> 
-                            Опция 2
-                      <label class="switch">
-                        <input type="checkbox">
-                        <span class="slideSwitch round"></span>
-                      </label>
-
-                    </div></li>
-                      <li> </li>
-                    </ul>
-                  </li>
-                  <li class="dropdown">
-                    <input type="checkbox" />
-                    <a href="#" data-toggle="dropdown">Сеть</a>
-                    <ul class="dropdown-menu">
-                      <li><div class='NetworkSetting'><span>Имя сети</span><input type = "text" id="NetName" name=NetConf></input></div> </li>
-                      <li><div class='NetworkSetting'><span>Пароль сети</span><input type = "password" id="NetPass" name=NetConf></input></div> </li>
-                      <li><div class='NetworkSetting'><span>Имя локальной сети</span><input type = "text" id="LocName" name=NetConf></input></div> </li>
-                      <li><div class='NetworkSetting'><span>Пароль локальной сети</span><input type = "password" id="LocPass" name=NetConf></input></div> </li>
-                      <li><div class='NetworkSetting'><div class='NetworkSettingSubmit'href="#" id="NetSubmit"><span>Сохранить</span></div></div></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown">
-                    <input type="checkbox" />
-                    <a href="#" data-toggle="dropdown">Обновления</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Проверить обновления</a></li>
-                      <li><a href="#">...</a></li>
-                      <li><a href="#">Services</a></li>
-                      <li><a href="#">Contact</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown">
-                    <input type="checkbox" />
-                    <a href="#" data-toggle="dropdown">Информация</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Home</a></li>
-                      <li><a href="#">About Us</a></li>
-                      <li><a href="#">Services</a></li>
-                      <li><a href="#">Contact</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              
-
-    </main>
-    <script src=/static/js/Popup.js></script>
-    <script src=/static/js/Sliders.js></script>
-    <script src=/static/js/NetworkMenu.js></script>
+  </main>
+  <script src=/static/js/Popup.js></script>
+  <script src=/static/js/Shared.js></script>
+  <script src=/static/js/Sliders.js></script>
+  <script src=/static/js/NetworkMenu.js></script>
+  <script src=/static/js/InfoPanel.js></script>
+  <script src=/static/js/Update.js></script>
 </body>
+
 </html>
