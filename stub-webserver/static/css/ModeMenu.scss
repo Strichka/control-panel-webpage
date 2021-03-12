@@ -1,7 +1,23 @@
 .ModeSelector{
+    display:flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    width: 100%;
+    padding:5px;
 
+    div{
+        margin:0 !important;
+        width:90%;
+        background-color: white;
+        
+
+    }
 
     & .Active{
-        background-color: gold;
+        background-color: lightgreen;
+        &:hover{
+            background-color: lightgreen;
+        }
     }
 }

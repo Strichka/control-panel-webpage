@@ -12,6 +12,7 @@ body{
     margin-right: auto;
 }
 header{
+     
     display: flex;
     justify-content: space-evenly;
     
@@ -26,7 +27,9 @@ header{
         border-radius: 15px;
     }
     img{
+        padding: 15px;
         max-width: 50vw;
+        
     }
 
     

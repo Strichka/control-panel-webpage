@@ -1,4 +1,32 @@
+.ModeSelector {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  padding: 5px;
+}
+
+.ModeSelector div {
+  margin: 0 !important;
+  width: 90%;
+  background-color: white;
+}
+
 .ModeSelector .Active {
-  background-color: gold;
+  background-color: lightgreen;
+}
+
+.ModeSelector .Active:hover {
+  background-color: lightgreen;
 }
 /*# sourceMappingURL=ModeMenu.css.map */

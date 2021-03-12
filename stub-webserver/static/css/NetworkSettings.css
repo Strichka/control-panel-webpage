@@ -52,7 +52,7 @@
 .NetworkSettingSubmit:hover {
   -webkit-box-shadow: 1px 1px;
           box-shadow: 1px 1px;
-  background: white !important;
+  background: white;
 }
 
 .NetworkSettingSubmit:hover span {
