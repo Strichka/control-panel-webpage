@@ -24,10 +24,18 @@ window.addEventListener('load', (event) => {
 
             sliderSettings = JSON.parse(this.responseText)
             console.log(sliderSettings);
-            sliders[0].value = sliderSettings.brightness;
-            sliders[1].value = sliderSettings.speed;
-            sliders[2].value = sliderSettings.width;
-            sliders[3].value = sliderSettings.led_count;
+            let SetArray = [];
+            
+            SetArray[0] = sliderSettings.brightness;
+            SetArray[1] = sliderSettings.speed;
+            SetArray[2] = sliderSettings.width;
+            SetArray[3] = sliderSettings.led_count;
+            
+            sliders.forEach((element,i) => {
+                element.value = SetArray[i];
+                var event = new Event('input', {});
+                element.dispatchEvent(event);
+            });
             ModeIndex = sliderSettings.mode_index;
             ModeSelectors[ModeIndex].classList.add("Active");
             sliders.forEach((element, i) => {
@@ -91,19 +99,26 @@ let ChangeSlideData = ((element, i) => {
 
 });
 //
-PLUSbtn.addEventListener("mousedown", (event) => {
-    sliders[3].value = parseInt(sliders[3].value) + 500;
+
+function ADDled(){
+    sliders[3].value = parseInt(sliders[3].value) + 1;
     var event = new Event('input', {});
 
     sliders[3].dispatchEvent(event);
-});
-MINUSbtn.addEventListener("mousedown", (event) => {
-    sliders[3].value = parseInt(sliders[3].value) - 500;
-    var event = new Event('input', {});
-    sliders[3].dispatchEvent(event);
+    setTimeout(ADDled,100);
 
 }
-);
+function DECREASEled(){
+    sliders[3].value = parseInt(sliders[3].value) - 1;
+    var event = new Event('input', {});
+    sliders[3].dispatchEvent(event);
+    setTimeout(DECREASEled(),100);
+
+}
+
+
+PLUSbtn.addEventListener("mousedown", (event) => ADDled());
+MINUSbtn.addEventListener("mousedown", (event) => DECREASEled());
 
 ModeSelectors.forEach((element ,i) => {
     element.addEventListener("click", () => {

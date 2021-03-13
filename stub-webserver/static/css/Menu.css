@@ -79,7 +79,6 @@ input[type="checkbox"]:focus {
   display: block;
   color: black;
   background: white;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
   padding: 10px;
 }
 
