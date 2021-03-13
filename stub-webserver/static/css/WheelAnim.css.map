@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA;;;;;oDAKoD;AAEpD;;;;GAIG;AAEH,AAAA,SAAS,CAAA;EACL,SAAS,EAAE,mCAAmC;CACjD;;AAGA,kBAAkB,CAAlB,aAAkB;EACf,EAAE;IACA,iBAAiB,EAAE,SAAS;IACpB,SAAS,EAAE,SAAS;;EAE9B,IAAI;IACF,iBAAiB,EAAE,cAAc;IACzB,SAAS,EAAE,cAAc;;;;AAGrC,UAAU,CAAV,aAAU;EACR,EAAE;IACA,iBAAiB,EAAE,SAAS;IACpB,SAAS,EAAE,SAAS;;EAE9B,IAAI;IACF,iBAAiB,EAAE,cAAc;IACzB,SAAS,EAAE,cAAc",
+    "sources": [
+        "WheelAnim.scss"
+    ],
+    "names": [],
+    "file": "WheelAnim.css"
+}

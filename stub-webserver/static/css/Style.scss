@@ -2,7 +2,9 @@ body{
     background-color: gray;
 }
 .contentWrapper{
-
+main{
+    position:relative;
+}
     
 }
 :is(main,header){
