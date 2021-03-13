@@ -6,6 +6,30 @@ body {
   font-size: 16px;
 }
 
+
+
+.borderLine{ 
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width:97%;
+  height:0.5px;
+  size:0.5px;
+
+  
+    border: none;
+    border-bottom: #333 solid 0.1px;
+    
+    color: #333;
+    overflow: visible;
+    text-align: center;
+   
+  
+}
+
+
+
+
 *,
 *:before,
 *:after {
@@ -26,7 +50,7 @@ body {
 
 .title {
   font-family: "Pacifico";
-  font-weight: norma;
+  font-weight: normal;
   font-size: 40px;
   text-align: center;
   line-height: 1.4;
@@ -35,9 +59,24 @@ body {
 
 .dropdown {
   position: relative;
+  input{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+input[type="checkbox"]:focus{
+  outline:0;
 }
 .dropdown a {
   text-decoration: none;
+  @media (min-width: 500px) {
+    text-align: center;
+  }
 }
 .dropdown [data-toggle=dropdown] {
   display: block;
@@ -48,9 +87,9 @@ body {
   
 
   //
-  -webkit-box-shadow: 0 1px 0 #a7a7a7 inset, 0 -1px 0 #000000 inset;
-  -moz-box-shadow: 0 1px 0 #a7a7a7 inset, 0 -1px 0 #000000 inset;
-  box-shadow: 0 1px 0 #a7a7a7 inset, 0 -1px 0 #000000 inset;
+  //-webkit-box-shadow: 0 1px 0 #a7a7a7 inset, 0 -1px 0 #000000 inset;
+  //-moz-box-shadow: 0 1px 0 #a7a7a7 inset, 0 -1px 0 #000000 inset;
+  //box-shadow: 0 1px 0 #a7a7a7 inset, 0 -1px 0 #000000 inset;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
   padding: 10px;
 }
@@ -134,13 +173,14 @@ body {
   -ms-transform: scaleY(1);
   -o-transform: scaleY(1);
   transform: scaleY(1);
-  animation: showAnimation 0.5s ease-in-out;
-  -moz-animation: showAnimation 0.5s ease-in-out;
-  -webkit-animation: showAnimation 0.5s ease-in-out;
-  -webkit-transition: max-height 2s ease-in-out;
-  -moz-transition: max-height 2s ease-in-out;
-  -o-transition: max-height 2s ease-in-out;
-  transition: max-height 2s ease-in-out;
+  animation: showAnimation 0.3s ease-in-out;
+  -moz-animation: showAnimation 0.3s ease-in-out;
+  -webkit-animation: showAnimation 0.3s ease-in-out;
+  -webkit-transition: max-height 1s ease-in-out;
+  -moz-transition: max-height 1s ease-in-out;
+  -o-transition: max-height 1s ease-in-out;
+  transition: max-height 1s ease-in-out;
+  
  
 }
 .dropdown > input[type=checkbox]:checked + a[data-toggle=dropdown]:before {

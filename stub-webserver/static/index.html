@@ -14,16 +14,17 @@
   <link href="/static/css/ModeMenu.css" rel="stylesheet">
   <link href="/static/css/popup.css" rel="stylesheet">
   <link href="/static/css/info.css" rel="stylesheet">
-  <link href="/static/css/ColorWheel.css" rel="stylesheet">
-  <link href="/static/css/WheelAnim.css" rel="stylesheet">
+ <!-- <link href="/static/css/ColorWheel.css" rel="stylesheet">
+  <link href="/static/css/WheelAnim.css" rel="stylesheet">-->
 </head>
 
 <body id='Body'>
-  <header>
+  
+  <header >
     <img src='/static/media/logo.png'>
 
   </header>
-  <main>
+  <main id="panel">
     <div class='SliderSection'>
 
       <div class="slidecontainer">
@@ -50,7 +51,7 @@
         </div>
         <p>Количество светодиодов: <span class="SlideOut"></span></p>
       </div>
-      <div class="WheelGrid">
+      <!--<div class="WheelGrid">
       <div class="ColorWheelWrap .flip-horizontal-bottom" id="ColorWheelWrap"name="WhWr">
       </div>
       <div class="ColorWheelWrap2" id="ColorWheelWrap2" name="WhWr"></div>
@@ -61,13 +62,13 @@
       <div class="MagicWheel" name="MagicWheelArray1">5</div>
       <div class="MagicWheel" name="MagicWheelArray1">6</div>
       
-    
+          колесо
     
     </div>
       <button id="ChangeSide">change side</button>
       </div>
     </div>
-
+ -->
     <div class="container">
       <!--<h1 class="title">Dropdown Menu</h1>-->
       <ul>
@@ -76,12 +77,14 @@
 
         <li class="dropdown">
           <input type="checkbox" />
-          <a href="#" data-toggle="dropdown">Режимы</a>
+          <hr class="borderLine" >
+          <a  data-toggle="dropdown">Режимы</a>
+          <hr class="borderLine" >
           <ul class="dropdown-menu">
-            <li> <div class="ModeSelector"><div name="ModeSelector" class='NetworkSettingSubmit'href="#">Режим 1</div></div></li>
-            <li> <div class="ModeSelector"><div name="ModeSelector" class='NetworkSettingSubmit' href="#">Режим 2</div></div></li>
-            <li> <div class="ModeSelector"><div name="ModeSelector" class='NetworkSettingSubmit' href="#">Режим 3</div></div></li>
-
+            <div class="ModeSelector"><div name="ModeSelector" class='NetworkSettingSubmit'href="#">Режим 1</div></div>
+             <div class="ModeSelector"><div name="ModeSelector" class='NetworkSettingSubmit' href="#">Режим 2</div></div>
+             <div class="ModeSelector"><div name="ModeSelector" class='NetworkSettingSubmit' href="#">Режим 3</div></div>
+             <hr class="borderLine" >
           </ul>
         </li>
 
@@ -91,22 +94,24 @@
 
         <li class="dropdown">
           <input id="Menu1" type="checkbox" />
-          <a href="#" data-toggle="dropdown">Опции</a>
+          
+          <a  data-toggle="dropdown">Опции</a>
+          <hr class="borderLine" >
           <ul class="dropdown-menu">
 
 
 
 
-            <li><a href="#">Опции</a></li>
+            <li><a >Опции</a></li>
             <li>
 
               <div class="switchesPanel">
-                Опция 1
+                <span>Опция 1</span>
                 <label class="switch">
                   <input type="checkbox">
                   <span class="slideSwitch round"></span>
                 </label>
-                Опция 2
+                <span>Опция 2</span>
                 <label class="switch">
                   <input type="checkbox">
                   <span class="slideSwitch round"></span>
@@ -115,11 +120,14 @@
               </div>
             </li>
             <li> </li>
+            <hr class="borderLine" >
           </ul>
         </li>
         <li class="dropdown">
           <input type="checkbox" />
-          <a href="#" data-toggle="dropdown">Сеть</a>
+          
+          <a  data-toggle="dropdown">Сеть</a>
+          <hr class="borderLine" >
           <ul class="dropdown-menu">
             <li>
               <div class='NetworkSetting'><span>Имя сети</span><input type="text" id="NetName" name=NetConf></input>
@@ -142,18 +150,21 @@
                 <div class='NetworkSettingSubmit' href="#" id="NetSubmit"><span>Сохранить</span></div>
               </div>
             </li>
+            <hr class="borderLine" >
           </ul>
         </li>
         <li class="dropdown">
           <input type="checkbox" />
-          <a href="#" data-toggle="dropdown">Обновления</a>
+          
+          <a  data-toggle="dropdown">Обновления</a>
+          <hr class="borderLine" >
           <ul class="dropdown-menu">
             <li>
               <div class='NetworkSetting'>
                 <div class='NetworkSettingSubmit' id="UpdatePop"><span>Проверить обновления</span></div>
               </div>
             </li>
-            <li><a class='NetworkSetting' id="infoBox">
+            <a class='NetworkSetting' id="infoBox">
                 <div class="infoTable" id="infoTab">
                   <div>Firmware name</div>
                   <div>Version</div>
@@ -163,18 +174,21 @@
                   <div>STA mac</div>
                   <div>STA ip</div>
                 </div>
-              </a></li>
-
+              </a>
+              <hr class="borderLine" >
           </ul>
         </li>
         <li class="dropdown">
           <input type="checkbox" />
-          <a href="#" data-toggle="dropdown">Информация</a>
+          
+          <a data-toggle="dropdown">Информация</a>
+          <hr class="borderLine" >
           <ul class="dropdown-menu">
             <li><a href="#">Home</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">Contact</a></li>
+            <hr class="borderLine" >
           </ul>
         </li>
       </ul>
@@ -187,8 +201,10 @@
   <script src=/static/js/NetworkMenu.js></script>
   <script src=/static/js/InfoPanel.js></script>
   <script src=/static/js/Update.js></script>
-  <script src=/static/js/ColorWheel.js></script>
-  <script src=/static/js/WheelCode.js></script>
+  <script src=/static/js/Menu.js></script>
+  
+ <!-- <script src=/static/js/ColorWheel.js></script>
+  <script src=/static/js/WheelCode.js></script>-->
 </body>
 
 </html>

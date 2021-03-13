@@ -12,7 +12,7 @@
     }
     input{
         
-        
+        max-width: 400px;
         width: 85%;
         border-radius: 15px;
         border: 1px solid grey;
@@ -29,6 +29,7 @@
 .NetworkSettingSubmit{
     border-radius: 15px;
     width: 85%;
+    max-width: 400px;
     padding: 0 15px 0 15px !important;
     
     height: 4ch;

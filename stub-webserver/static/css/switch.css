@@ -1,10 +1,25 @@
 .switchesPanel {
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  -ms-grid-columns: 2fr 1fr;
+      grid-template-columns: 2fr 1fr;
   -ms-grid-rows: auto;
       grid-template-rows: auto;
   display: -ms-grid;
   display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  row-gap: 5px;
+}
+
+.switchesPanel span {
+  padding-left: 10px;
+}
+
+.switchesPanel label {
+  margin-left: auto;
+  margin-right: 10px;
 }
 
 .switch {
@@ -12,6 +27,15 @@
   display: inline-block;
   width: 60px;
   height: 34px;
+}
+
+.switch input, .switch span {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Hide default HTML checkbox */
@@ -48,7 +72,7 @@
 }
 
 input:checked + .slideSwitch {
-  background-color: #18e218;
+  background-color: #38bd38;
 }
 
 input:focus + .slideSwitch {
