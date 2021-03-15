@@ -235,8 +235,16 @@ func GetUpdatePerform(ctx *gin.Context) {
 	time.Sleep(10 * time.Second)
 }
 
+func CacheMiddleware(ctx *gin.Context) {
+	ctx.Header("Cache-Control", "no-cache, no-store, must-revalidate")
+	ctx.Header("Pragma", "no-cache")
+	ctx.Header("Expires", "0")
+}
+
 func main() {
 	router := gin.New()
+
+	router.Use(CacheMiddleware)
 
 	root := router.Group("")
 	root.GET("/static/*Filename", GetFile)
@@ -257,5 +265,5 @@ func main() {
 	update.GET("/check", GetUpdateCheck)
 	update.GET("/perform", GetUpdatePerform)
 
-	router.Run("localhost:8080")
+	router.Run(":8080")
 }
