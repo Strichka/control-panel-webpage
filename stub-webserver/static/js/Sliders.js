@@ -121,7 +121,9 @@ let increment=1;
 let decrement=1;
 
 function continuosIncerment() {
+    if(sliders[3].value <  parseInt(sliders[3].getAttribute('max'))){
     sliders[3].value = parseInt(sliders[3].value) + 1;
+    }
     if(increment<10){
     increment = increment + 1;
     }
@@ -129,7 +131,9 @@ function continuosIncerment() {
 }
 
 function continuosDecerment() {
+    if(sliders[3].value >  parseInt(sliders[3].getAttribute('min'))){
     sliders[3].value = parseInt(sliders[3].value) - 1;
+    }
     if(increment<10){
     increment = increment + 1;
     }
