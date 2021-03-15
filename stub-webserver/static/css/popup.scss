@@ -54,6 +54,13 @@
             height:60px;
             display: grid;
             grid-template-columns: 1fr 1fr;
+            :last-child{
+                background-color: crimson;
+            }
+            :first-child{
+                background-color: greenyellow;
+            }
+            
             :is(#Agree,#AgreeUpd,#AgreeClosePopup){
                 background-color: greenyellow;
                 
@@ -73,4 +80,18 @@
     }
 
 
+}
+:is(#Agree,#AgreeUpd,#AgreeClosePopup){
+    background-color: greenyellow;}
+
+    :is(#Disagree,#DisagreeUpd){
+        background-color: crimson;}
+
+.popupButtonPanel{
+    :first-child{
+        background-color: greenyellow;
+    }
+    :last-child{
+        background-color: crimson;
+    }
 }

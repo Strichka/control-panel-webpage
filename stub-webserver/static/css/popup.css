@@ -91,6 +91,14 @@
       grid-template-columns: 1fr 1fr;
 }
 
+.Popup .textbox div :last-child {
+  background-color: crimson;
+}
+
+.Popup .textbox div :first-child {
+  background-color: greenyellow;
+}
+
 .Popup .textbox div :is(#Agree, #AgreeUpd, #AgreeClosePopup) {
   background-color: greenyellow;
 }
@@ -105,5 +113,21 @@
   color: white;
   font-size: smaller;
   text-shadow: 1px 1px black;
+}
+
+:is(#Agree, #AgreeUpd, #AgreeClosePopup) {
+  background-color: greenyellow;
+}
+
+:is(#Disagree, #DisagreeUpd) {
+  background-color: crimson;
+}
+
+.popupButtonPanel :first-child {
+  background-color: greenyellow;
+}
+
+.popupButtonPanel :last-child {
+  background-color: crimson;
 }
 /*# sourceMappingURL=popup.css.map */
