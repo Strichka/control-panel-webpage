@@ -33,7 +33,7 @@ window.addEventListener('load', (event) => {
 
             sliders.forEach((element,i) => {
                 element.value = SetArray[i];
-                var event = new Event('input', {});
+                var event = new Event('mouseup', {});
                 element.dispatchEvent(event);
             });
             ModeIndex = sliderSettings.mode_index;
@@ -66,10 +66,22 @@ output.forEach(element => {
 
 console.log(output);
 
+sliders.forEach((element, i) => {
+    element.addEventListener("input", () => {
+
+        enforce_maxlength(event);
+        arrS[i].textContent = ` .slidecontainer:nth-child(${i + 1}) .slider::-webkit-slider-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)} `
+        output[i].innerHTML = element.value;
+        if(i==3){
+            ChangeSlideData(element, i);
+        }
+
+    })
+});
 
 
 sliders.forEach((element, i) => {
-    element.addEventListener("input", () => {
+    element.addEventListener("mouseup", () => {
 
         enforce_maxlength(event);
         arrS[i].textContent = ` .slidecontainer:nth-child(${i + 1}) .slider::-webkit-slider-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)} `
@@ -104,7 +116,7 @@ let ChangeSlideData = ((element, i) => {
 
 
 function SendLed(){
-    var event = new Event('input', {});
+    var event = new Event('mouseup', {});
     sliders[3].dispatchEvent(event);
 }
 
