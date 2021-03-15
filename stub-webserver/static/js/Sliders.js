@@ -30,7 +30,7 @@ window.addEventListener('load', (event) => {
             SetArray[1] = sliderSettings.speed;
             SetArray[2] = sliderSettings.width;
             SetArray[3] = sliderSettings.led_count;
-            
+
             sliders.forEach((element,i) => {
                 element.value = SetArray[i];
                 var event = new Event('input', {});
@@ -100,25 +100,87 @@ let ChangeSlideData = ((element, i) => {
 });
 //
 
-function ADDled(){
+
+
+
+function SendLed(){
+    var event = new Event('input', {});
+    sliders[3].dispatchEvent(event);
+}
+
+
+
+
+
+
+
+
+
+let timer;
+let increment=1;
+let decrement=1;
+
+function continuosIncerment() {
     sliders[3].value = parseInt(sliders[3].value) + 1;
-    var event = new Event('input', {});
-
-    sliders[3].dispatchEvent(event);
-    setTimeout(ADDled,100);
-
+    if(increment<10){
+    increment = increment + 1;
+    }
+  timer = setTimeout(continuosIncerment, 500 - parseInt(increment * 50));
 }
-function DECREASEled(){
+
+function continuosDecerment() {
     sliders[3].value = parseInt(sliders[3].value) - 1;
-    var event = new Event('input', {});
-    sliders[3].dispatchEvent(event);
-    setTimeout(DECREASEled(),100);
-
+    if(increment<10){
+    increment = increment + 1;
+    }
+  timer = setTimeout(continuosDecerment, 500 - parseInt(increment * 50));
 }
 
+function timeoutClear() {
+  clearTimeout(timer);
+    increment = 1;
+    decrement = 1;
+  SendLed();
+}
 
-PLUSbtn.addEventListener("mousedown", (event) => ADDled());
-MINUSbtn.addEventListener("mousedown", (event) => DECREASEled());
+PLUSbtn.addEventListener('mousedown', continuosIncerment);
+
+PLUSbtn.addEventListener('mouseup', timeoutClear);
+
+PLUSbtn.addEventListener('mouseleave', timeoutClear);
+
+MINUSbtn.addEventListener('mousedown', continuosDecerment);
+
+MINUSbtn.addEventListener('mouseup', timeoutClear);
+
+MINUSbtn.addEventListener('mouseleave', timeoutClear);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ModeSelectors.forEach((element ,i) => {
     element.addEventListener("click", () => {
