@@ -139,7 +139,7 @@ function continuosIncerment() {
     if(increment<10){
     increment = increment + 2;
     }
-  timer = setTimeout(continuosIncerment, 500 - parseInt(increment * 35));
+  timer = setTimeout(continuosIncerment, 500 - parseInt(increment * 40));
 }
 
 function continuosDecerment() {
@@ -149,7 +149,7 @@ function continuosDecerment() {
     if(increment<10){
     increment = increment + 2;
     }
-  timer = setTimeout(continuosDecerment, 500 - parseInt(increment * 35));
+  timer = setTimeout(continuosDecerment, 500 - parseInt(increment * 40));
 }
 
 function timeoutClear() {

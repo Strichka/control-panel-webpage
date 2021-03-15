@@ -1,5 +1,13 @@
 html{
     background-color: whitesmoke; 
+    * {
+    max-width:600px
+}
+}
+
+* {
+    touch-action: manipulation;
+    
 }
 body{
     background-color: whitesmoke;
