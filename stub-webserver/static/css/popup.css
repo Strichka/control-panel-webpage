@@ -65,9 +65,10 @@
 }
 
 .Popup .textbox .UpdateList :nth-child(1n) {
+  border-radius: 15px;
   font-size: small;
   text-align: center;
-  border: solid 1px;
+  border: solid 1px lightgray;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -82,7 +83,15 @@
   height: fit-content;
 }
 
-.Popup .textbox div {
+.Popup .textbox .UpdateList :nth-child(2n) {
+  border-radius: 0 15px 15px 0;
+}
+
+.Popup .textbox .UpdateList :nth-child(2n-1) {
+  border-radius: 15px 0 0 15px;
+}
+
+.Popup .textbox .popupButtonPanel {
   width: 100%;
   height: 60px;
   display: -ms-grid;
@@ -91,19 +100,19 @@
       grid-template-columns: 1fr 1fr;
 }
 
-.Popup .textbox div :last-child {
+.Popup .textbox .popupButtonPanel :last-child {
   background-color: crimson;
 }
 
-.Popup .textbox div :first-child {
+.Popup .textbox .popupButtonPanel :first-child {
   background-color: greenyellow;
 }
 
-.Popup .textbox div :is(#Agree, #AgreeUpd, #AgreeClosePopup) {
+.Popup .textbox .popupButtonPanel :is(#Agree, #AgreeUpd, #AgreeClosePopup) {
   background-color: greenyellow;
 }
 
-.Popup .textbox div :is(#Disagree, #DisagreeUpd) {
+.Popup .textbox .popupButtonPanel :is(#Disagree, #DisagreeUpd) {
   background-color: crimson;
 }
 

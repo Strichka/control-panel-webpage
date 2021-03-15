@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Strichka Control Panel</title>
   <link href="/static/css/Style.css" rel="stylesheet">
   <link href="/static/css/Sliders.css" rel="stylesheet">
   <link href="/static/css/Switch.css" rel="stylesheet">
@@ -164,8 +164,8 @@
                 <div class='NetworkSettingSubmit' id="UpdatePop"><span>Проверить обновления</span></div>
               </div>
             </li>
-            <a class='NetworkSetting' id="infoBox">
-                <div class="infoTable" id="infoTab">
+           <!-- <a class='NetworkSetting' id="infoBox">
+                <div class="infoTable" id="infoTab1">
                   <div>Firmware name</div>
                   <div>Version</div>
                   <div>AP mode</div>
@@ -174,7 +174,7 @@
                   <div>STA mac</div>
                   <div>STA ip</div>
                 </div>
-              </a>
+              </a>-->
               <hr class="borderLine" >
           </ul>
         </li>
@@ -184,10 +184,15 @@
           <a data-toggle="dropdown">Информация</a>
           <hr class="borderLine" >
           <ul class="dropdown-menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
+            <div class="infoTable" id="infoTab">
+              <div>Firmware name</div>
+              <div>Version</div>
+              <div>AP mode</div>
+              <div>STA mode</div>
+              <div>AP MAC</div>
+              <div>STA MAC</div>
+              <div>STA IP</div>
+            </div>
             <hr class="borderLine" >
           </ul>
         </li>

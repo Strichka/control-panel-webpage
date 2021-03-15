@@ -21,8 +21,8 @@ UpdatesButton.addEventListener("click", (event) => {
 
             body = document.getElementById("Body")
             var popup = document.createElement("div");
-            if (UpdateResponse.found === false) {
-                popup.innerHTML = "<div class='textbox'>Найдены обновления!<div class='UpdateList' id='UpdateList'></div><div><button class='button' id='AgreeUpd'>Обновить</button><button class='button' id='DisagreeUpd'>Не обновлять</button></div></div>";
+            if (UpdateResponse.found === true) {
+                popup.innerHTML = "<div class='textbox'>Найдены обновления!<div class='UpdateList' id='UpdateList'></div><div class='popupButtonPanel'><button class='button' id='AgreeUpd'>Обновить</button><button class='button' id='DisagreeUpd'>Не обновлять</button></div></div>";
                 popup.className = "Popup";
             document.body.appendChild(popup);
             var UpdateList = document.getElementById('UpdateList');
@@ -56,7 +56,7 @@ UpdatesButton.addEventListener("click", (event) => {
 
             }
             else{
-                popup.innerHTML = "<div class='textbox'>У вас последняя версия!<div class='UpdateList' id='UpdateList'></div><div><button class='button' id='AgreeClosePopup'>Хорошо</button></div>";
+                popup.innerHTML = "<div class='textbox'>У вас последняя версия!<div class='UpdateList' id='UpdateList'></div><div class='popupButtonPanel'><button class='button' id='AgreeClosePopup'>Хорошо</button></div>";
                 popup.className = "Popup";
             document.body.appendChild(popup);
 

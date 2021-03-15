@@ -137,9 +137,9 @@ function continuosIncerment() {
     sliders[3].value = parseInt(sliders[3].value) + 1;
     }
     if(increment<10){
-    increment = increment + 1;
+    increment = increment + 2;
     }
-  timer = setTimeout(continuosIncerment, 500 - parseInt(increment * 50));
+  timer = setTimeout(continuosIncerment, 500 - parseInt(increment * 35));
 }
 
 function continuosDecerment() {
@@ -147,9 +147,9 @@ function continuosDecerment() {
     sliders[3].value = parseInt(sliders[3].value) - 1;
     }
     if(increment<10){
-    increment = increment + 1;
+    increment = increment + 2;
     }
-  timer = setTimeout(continuosDecerment, 500 - parseInt(increment * 50));
+  timer = setTimeout(continuosDecerment, 500 - parseInt(increment * 35));
 }
 
 function timeoutClear() {
@@ -160,14 +160,18 @@ function timeoutClear() {
 }
 
 PLUSbtn.addEventListener('mousedown', continuosIncerment);
+PLUSbtn.addEventListener("touchstart", continuosIncerment);
 
 PLUSbtn.addEventListener('mouseup', timeoutClear);
+PLUSbtn.addEventListener('touchend', timeoutClear);
 
 PLUSbtn.addEventListener('mouseleave', timeoutClear);
 
 MINUSbtn.addEventListener('mousedown', continuosDecerment);
+MINUSbtn.addEventListener('touchstart', continuosDecerment);
 
 MINUSbtn.addEventListener('mouseup', timeoutClear);
+MINUSbtn.addEventListener('touchend', timeoutClear);
 
 MINUSbtn.addEventListener('mouseleave', timeoutClear);
 

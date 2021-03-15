@@ -59,6 +59,9 @@ input{
   height: 40px;
   font-size: large;
   background-color: lightgreen;
+  color: black;
+  
+  user-select: none;
   &:focus{
     outline: none !important;
   }

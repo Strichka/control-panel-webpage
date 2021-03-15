@@ -74,6 +74,11 @@ input {
   height: 40px;
   font-size: large;
   background-color: lightgreen;
+  color: black;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .LEDbtn:focus {

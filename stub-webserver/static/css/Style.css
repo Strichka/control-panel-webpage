@@ -1,12 +1,19 @@
+html {
+  background-color: whitesmoke;
+}
+
 body {
   background-color: whitesmoke;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .contentWrapper main {
   position: relative;
 }
 
-:is(main, header) {
+main, header {
   background-color: white;
   max-width: 600px;
   margin-left: auto;

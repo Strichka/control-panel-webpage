@@ -1,9 +1,15 @@
 .infoTable {
   display: -ms-grid;
   display: grid;
+  width: 90%;
+  max-width: 400px;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
   grid-auto-flow: row dense;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
   min-height: -webkit-fit-content;
   min-height: -moz-fit-content;
   min-height: fit-content;
@@ -11,7 +17,7 @@
 
 .infoTable div {
   padding: 2px;
-  border: 1px solid;
+  border: 1px solid lightgray;
   -ms-grid-column: 1;
       grid-column-start: 1;
 }
