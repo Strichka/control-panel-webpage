@@ -26,31 +26,47 @@
   </header>
   <main id="panel">
     <div class='SliderSection'>
-
+     
       <div class="slidecontainer">
-        <input type="range" id="brightnesSlider" min="0" max="255" value="50" class="slider" name="rangeInput">
+        
+        <span>0</span>
+        <input type="range" id="brightnesSlider" min="0" max="255" value="50" class="slider" name="rangeInput" >
+       
+        <span>100</span>
         <p>Яркость: <span class="SlideOut"></span></p>
       </div>
-
+      
       <div class="slidecontainer">
+        
+        <span>0.25</span>
         <input type="range" id="speedSlider" min="0" max="65535" value="50" class="slider" name="rangeInput">
+        <span>4</span>
         <p>Скорость: <span class="SlideOut"></span></p>
       </div>
-
+      
+      
+     
       <div class="slidecontainer">
+        
+        <span>0.25</span>
         <input type="range" min="0" id="widthSlider" max="65535" value="50" class="slider" name="rangeInput">
+        <span>4</span>
         <p>Ширина: <span class="SlideOut"></span></p>
       </div>
+   
+      
       <div class="slidecontainer">
-        <div>
+        <div class="LEDwrap">
+
           <button class="LEDbtn" id=MINUSbtn>-</button>
           <input type="number" step="1" id="diodsSlider" min="0" max="65535" maxlength="5" value="50" class="slider"
             name="rangeInput">
           <button class="LEDbtn" id=PLUSbtn>+</button>
 
         </div>
-        <p>Количество светодиодов: <span class="SlideOut"></span></p>
+        
       </div>
+      <p>Количество светодиодов: <span class="SlideOut"></span></p>
       <!--<div class="WheelGrid">
       <div class="ColorWheelWrap .flip-horizontal-bottom" id="ColorWheelWrap"name="WhWr">
       </div>

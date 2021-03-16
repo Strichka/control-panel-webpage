@@ -100,12 +100,14 @@ let ChangeSlideData = ((element, i) => {
     changeData.open("PATCH", '/led/config', true);
 
     let val = sliderSettings;
+    //place to modify data for server V
     if (i < 3) {
         val[Object.keys(sliderSettings)[i + 1]] = parseInt(element.value, 10);
     }
     else {
         val[Object.keys(sliderSettings)[i + 2]] = parseInt(element.value, 10);
     }
+    //use formulas here ^
     console.log(val);
     changeData.send(JSON.stringify(val));
 

@@ -13,16 +13,54 @@ input{
   outline-style: none;
 }
 .slider {
-    width: 80%;
-    margin-left:auto;
-    margin-right: auto;
+    width: 99%;
+    
     -webkit-appearance: none;
     height: 8px;
     border-radius: 4px;
     
     background-color: rgb(200, 200, 200);
     
+    
+    
   }
+  //#brightnesSlider{
+    
+   /* &::before{
+      
+      max-width: 500px;
+      position: absolute;
+      color: #777;
+      content: '4';
+      padding-right: 1%;
+      //padding: 40px;
+      word-spacing:normal;
+      left: 91%;
+      font-size: larger;
+      top: -3px;
+      text-align: right; 
+     // background-color: aqua;
+      z-index: -1;
+      
+    }
+
+    &::after{
+      
+      max-width: 500px;
+      position: absolute;
+      color: #777;
+      padding-left: 1%;
+      content: '0.5';
+      //padding: 40px;
+      word-spacing:normal;
+      left: 4.5%;
+      font-size: larger;
+      top: -3px;
+     // background-color: aqua;
+      z-index: -1;
+      
+    }*/
+  //}
   
   .slider::-webkit-slider-thumb {
       
@@ -37,13 +75,14 @@ input{
   }
   
   .slidecontainer {
-
+    position:relative;
     width: 100%;
     transform: translateY(-10px);
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: auto;
     align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
+    justify-content: center;
     #diodsSlider{
       width: fit-content;
       min-height: 3ch;
@@ -51,7 +90,27 @@ input{
       background-color: white;
       
     }
-    
+    p{
+      grid-column: 2;
+      grid-row: 2;
+      width:100%;
+      text-align: center;
+      padding:0;
+    }
+    span{
+      font-size: smaller;
+      color:gray;
+      padding:0px;
+      width:100%;
+
+      text-align: center;
+
+    }
+    .LEDwrap{ grid-column: 2;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    }
   }
 .LEDbtn{
   border-radius: 100%;
