@@ -166,30 +166,37 @@ function timeoutClear() {
 
 //touchscreen check
 function checkscrn(){
-    var isTouch = true;
-    PLUSbtn.addEventListener("touchstart", continuosIncerment);
-    PLUSbtn.addEventListener('touchend', timeoutClear);
-    MINUSbtn.addEventListener('touchstart', continuosDecerment);
-    MINUSbtn.addEventListener('touchend', timeoutClear);
+    var isTouch = false;
     
-    window.addEventListener('mousemove', function mouseMoveDetector() {
-        isTouch = false;
-            PLUSbtn.removeEventListener("touchstart", continuosIncerment);
-            PLUSbtn.removeEventListener('touchend', timeoutClear);
-            MINUSbtn.removeEventListener('touchstart', continuosDecerment);
-            MINUSbtn.removeEventListener('touchend', timeoutClear);
-            mousectrl();
-        window.removeEventListener('mousemove', mouseMoveDetector);
-    });
-    }
-    function mousectrl(){
-            PLUSbtn.addEventListener('mousedown', continuosIncerment);
+    
+    PLUSbtn.addEventListener('mousedown', continuosIncerment);
             PLUSbtn.addEventListener('mouseup', timeoutClear);
             PLUSbtn.addEventListener('mouseleave', timeoutClear);
         
             MINUSbtn.addEventListener('mousedown', continuosDecerment);
             MINUSbtn.addEventListener('mouseup', timeoutClear);
             MINUSbtn.addEventListener('mouseleave', timeoutClear);
+
+
+    window.addEventListener('touchstart', function touchDetector() {
+        alert("touch");
+        isTouch = true;
+        PLUSbtn.removeEventListener('mousedown', continuosIncerment);
+        PLUSbtn.removeEventListener('mouseup', timeoutClear);
+        PLUSbtn.removeEventListener('mouseleave', timeoutClear);
+    
+        MINUSbtn.removeEventListener('mousedown', continuosDecerment);
+        MINUSbtn.removeEventListener('mouseup', timeoutClear);
+        MINUSbtn.removeEventListener('mouseleave', timeoutClear);
+            touchctrl();
+        window.removeEventListener('touchstart', touchDetector);
+    });
+    }
+    function touchctrl(){
+        PLUSbtn.addEventListener("touchstart", continuosIncerment);
+        PLUSbtn.addEventListener('touchend', timeoutClear);
+        MINUSbtn.addEventListener('touchstart', continuosDecerment);
+        MINUSbtn.addEventListener('touchend', timeoutClear);
             
         }
 
