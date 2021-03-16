@@ -20,14 +20,12 @@
   margin: 0;
   width: 90%;
   background-color: white;
-  color:black;
   margin-left: auto;
   margin-right: auto;
 }
 
 .ModeSelector .Active {
   background-color: lightgreen;
-  color:white;
 }
 
 .ModeSelector .Active:hover {
