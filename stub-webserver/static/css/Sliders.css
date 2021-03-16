@@ -99,6 +99,7 @@ input {
   min-height: 3ch;
   font-size: larger;
   background-color: white;
+  text-align: center;
 }
 
 .slidecontainer p {

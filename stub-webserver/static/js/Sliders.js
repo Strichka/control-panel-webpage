@@ -1,4 +1,6 @@
 
+
+
 let sliders = document.querySelectorAll('input[name=rangeInput]');
 let PLUSbtn = document.getElementById("PLUSbtn");
 let MINUSbtn = document.getElementById("MINUSbtn");
@@ -13,7 +15,7 @@ var sliderSettings;
 //document.body.addEventListener('input', enforce_maxlength);
 window.addEventListener('load', (event) => {
 
-
+    checkscrn();
 
     var GETsliders = new XMLHttpRequest();
     GETsliders.open("GET", '/led/config', true);
@@ -162,21 +164,34 @@ function timeoutClear() {
   SendLed();
 }
 
-PLUSbtn.addEventListener('mousedown', continuosIncerment);
-PLUSbtn.addEventListener("touchstart", continuosIncerment);
-
-PLUSbtn.addEventListener('mouseup', timeoutClear);
-PLUSbtn.addEventListener('touchend', timeoutClear);
-
-PLUSbtn.addEventListener('mouseleave', timeoutClear);
-
-MINUSbtn.addEventListener('mousedown', continuosDecerment);
-MINUSbtn.addEventListener('touchstart', continuosDecerment);
-
-MINUSbtn.addEventListener('mouseup', timeoutClear);
-MINUSbtn.addEventListener('touchend', timeoutClear);
-
-MINUSbtn.addEventListener('mouseleave', timeoutClear);
+//touchscreen check
+function checkscrn(){
+    var isTouch = true;
+    PLUSbtn.addEventListener("touchstart", continuosIncerment);
+    PLUSbtn.addEventListener('touchend', timeoutClear);
+    MINUSbtn.addEventListener('touchstart', continuosDecerment);
+    MINUSbtn.addEventListener('touchend', timeoutClear);
+    
+    window.addEventListener('mousemove', function mouseMoveDetector() {
+        isTouch = false;
+            PLUSbtn.removeEventListener("touchstart", continuosIncerment);
+            PLUSbtn.removeEventListener('touchend', timeoutClear);
+            MINUSbtn.removeEventListener('touchstart', continuosDecerment);
+            MINUSbtn.removeEventListener('touchend', timeoutClear);
+            mousectrl();
+        window.removeEventListener('mousemove', mouseMoveDetector);
+    });
+    }
+    function mousectrl(){
+            PLUSbtn.addEventListener('mousedown', continuosIncerment);
+            PLUSbtn.addEventListener('mouseup', timeoutClear);
+            PLUSbtn.addEventListener('mouseleave', timeoutClear);
+        
+            MINUSbtn.addEventListener('mousedown', continuosDecerment);
+            MINUSbtn.addEventListener('mouseup', timeoutClear);
+            MINUSbtn.addEventListener('mouseleave', timeoutClear);
+            
+        }
 
 
 
