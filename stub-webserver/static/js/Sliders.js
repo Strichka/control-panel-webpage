@@ -141,6 +141,7 @@ function continuosIncerment() {
     if(increment<10){
     increment = increment + 2;
     }
+    console.log("+");
   timer = setTimeout(continuosIncerment, 500 - parseInt(increment * 40));
 }
 
@@ -148,16 +149,16 @@ function continuosDecerment() {
     if(sliders[3].value >  parseInt(sliders[3].getAttribute('min'))){
     sliders[3].value = parseInt(sliders[3].value) - 1;
     }
-    if(increment<10){
-    increment = increment + 2;
+    if(decrement<10){
+        decrement = decrement + 2;
     }
-  timer = setTimeout(continuosDecerment, 500 - parseInt(increment * 40));
+  timer = setTimeout(continuosDecerment, 500 - parseInt(decrement * 40));
 }
 
 function timeoutClear() {
   clearTimeout(timer);
-    increment = 1;
-    decrement = 1;
+    increment = -1;
+    decrement = -1;
   SendLed();
 }
 

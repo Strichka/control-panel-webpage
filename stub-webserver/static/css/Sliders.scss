@@ -124,7 +124,12 @@ input{
   &:focus{
     outline: none !important;
   }
-  
+  &:first-of-type{
+    border-radius: 100% 0 0 100%;
+  }
+  &:last-of-type{
+    border-radius: 0 100% 100% 0;
+  }
 }
 
 
