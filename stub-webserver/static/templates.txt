@@ -1,4 +1,40 @@
-.switchesPanel{
+ ///options html
+ 
+ <li class="dropdown">
+          <input id="Menu1" type="checkbox" />
+          
+          <a  data-toggle="dropdown">Опции</a>
+          <hr class="borderLine" >
+          <ul class="dropdown-menu">
+
+
+
+
+            <li><a >Опции</a></li>
+            <li>
+
+              <div class="switchesPanel">
+                <span>Опция 1</span>
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slideSwitch round"></span>
+                </label>
+                <span>Опция 2</span>
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slideSwitch round"></span>
+                </label>
+
+              </div>
+            </li>
+            <li> </li>
+            <hr class="borderLine" >
+          </ul>
+        </li>
+
+        ///switches.scss
+
+        .switchesPanel{
   margin-top: 5px;
   margin-bottom: 5px;
 grid-template-columns: 2fr 1fr;
@@ -32,14 +68,13 @@ label{
     }
   }
   
-  /* Hide default HTML checkbox */
+ 
   .switch input {
     opacity: 0;
     width: 0;
     height: 0;
   }
-  
-  /* The slideSwitch */
+
   .slideSwitch {
     position: absolute;
     cursor: pointer;
@@ -79,7 +114,7 @@ label{
     transform: translateX(27.5px);
   }
   
-  /* Rounded slideSwitchs */
+
   .slideSwitch.round {
     border-radius: 34px;
   }
@@ -87,3 +122,5 @@ label{
   .slideSwitch.round:before {
     border-radius: 50%;
   }
+
+  ///

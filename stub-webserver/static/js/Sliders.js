@@ -47,7 +47,7 @@ window.addEventListener('load', (event) => {
             ModeSelectors[ModeIndex].classList.add("Active");
             sliders.forEach((element, i) => {
                 if(i>0&&i<3){
-                    output[i].innerHTML = (Math.pow(2,(element.value/16384 - 2))).toFixed(1);
+                    output[i].innerHTML = (Math.pow(2,(element.value/16384 - 2))).toFixed(2);
                 }
                 else{
                 output[i].innerHTML = element.value;
@@ -83,7 +83,7 @@ sliders.forEach((element, i) => {
         enforce_maxlength(event);
         arrS[i].textContent = ` .slidecontainer:nth-child(${i + 1}) .slider::-webkit-slider-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)} `
         if(i>0&&i<3){
-            output[i].innerHTML = (Math.pow(2,(element.value/16384 - 2)).toFixed(1));
+            output[i].innerHTML = (Math.pow(2,(element.value/16384 - 2)).toFixed(2));
         }
         else{
         output[i].innerHTML = element.value;
@@ -104,7 +104,7 @@ sliders.forEach((element, i) => {
 
 
         if(i>0&&i<3){
-            output[i].innerHTML = (Math.pow(2,(element.value/16384 - 2))).toFixed(1);
+            output[i].innerHTML = (Math.pow(2,(element.value/16384 - 2))).toFixed(2);
         }
         else{
         output[i].innerHTML = element.value;
