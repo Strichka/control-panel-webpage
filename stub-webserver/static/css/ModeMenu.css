@@ -22,6 +22,10 @@
   background-color: white;
   margin-left: auto;
   margin-right: auto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .ModeSelector .Active {

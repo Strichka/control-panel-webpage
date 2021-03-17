@@ -49,6 +49,10 @@
           align-items: center;
   background-color: lightgreen;
   border: 1px solid grey;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .NetworkSettingSubmit:hover {

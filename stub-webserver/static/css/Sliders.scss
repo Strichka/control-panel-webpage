@@ -85,10 +85,17 @@ input{
     justify-content: center;
     #diodsSlider{
       width: fit-content;
-      min-height: 3ch;
+      display: block;
+      
       font-size: larger;
       background-color: white;
       text-align: center;
+      border-radius: 0px;
+      height: 40px;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: 0.1px solid;
+      outline: none;
       
     }
     p{
@@ -117,9 +124,26 @@ input{
   border-radius: 100%;
   width:40px;
   height: 40px;
-  font-size: large;
+  font-size: normal;
   background-color: lightgreen;
   color: black;
+  text-align: center;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.1px solid;
+  &:active{
+    background-color: rgb(98, 252, 38);
+    transform: scale(1.05, 1.05);
+  }
+  
+  span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    color: black;
+    
+  }
   
   user-select: none;
   &:focus{

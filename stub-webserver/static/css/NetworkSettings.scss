@@ -38,6 +38,7 @@
     align-items: center;
     background-color: lightgreen;
     border: 1px solid grey;
+    user-select: none;
 
     &:hover{
         span{
