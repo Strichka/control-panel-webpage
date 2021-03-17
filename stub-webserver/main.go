@@ -8,13 +8,8 @@ import (
 	"time"
 )
 
-type Ping struct {
-	Pong null.Bool `json:"pong"`
-}
-
 type Policy struct {
-	IsInitialized null.Bool `json:"is_initialized"`
-	IsAccepted    null.Bool `json:"is_accepted"`
+	Accepted    null.Bool `json:"accepted"`
 }
 
 type Info struct {
@@ -27,11 +22,11 @@ type Info struct {
 	StaIp           null.String `json:"sta_ip"`
 }
 
-type HueRange struct {
-	From    null.Int `json:"from"`
-	To      null.Int `json:"to"`
-	Section null.Int `json:"section"`
-}
+//type HueRange struct {
+//	From    null.Int `json:"from"`
+//	To      null.Int `json:"to"`
+//	Section null.Int `json:"section"`
+//}
 
 type Update struct {
 	FirmwareVersion null.String `json:"firmware_version"`
@@ -43,7 +38,6 @@ type LedConfig struct {
 	Brightness null.Int `json:"brightness"`
 	Speed      null.Int `json:"speed"`
 	Width      null.Int `json:"width"`
-	HueRange   *HueRange `json:"hue_range"`
 	LedCount null.Int `json:"led_count"`
 }
 
@@ -60,13 +54,8 @@ type UpdateCheck struct {
 	Updates          *[]Update `json:"updates"`
 }
 
-var ping = Ping{
-	Pong: null.Bool{true, true},
-}
-
 var policy = Policy{
-	IsInitialized: null.Bool{false, true},
-	IsAccepted:    null.Bool{false, false},
+	Accepted:    null.Bool{Valid: false},
 }
 
 var info = Info{
@@ -84,11 +73,6 @@ var ledConfig = LedConfig{
 	Brightness: null.Int{255, true},
 	Speed:      null.Int{65535, true},
 	Width:      null.Int{65535, true},
-	HueRange: &HueRange{
-		From:    null.Int{0, true},
-		To:      null.Int{255, true},
-		Section: null.Int{0, true},
-	},
 	LedCount: null.Int{100, true},
 }
 
@@ -126,7 +110,6 @@ func GetFile(ctx *gin.Context) {
 func GetPing(ctx *gin.Context) {
 	resetMutex.Lock()
 	defer resetMutex.Unlock()
-	ctx.JSON(http.StatusOK, ping)
 }
 
 func GetPolicy(ctx *gin.Context) {
@@ -139,13 +122,10 @@ func PutPolicy(ctx *gin.Context) {
 	resetMutex.Lock()
 	defer resetMutex.Unlock()
 
-	var newPolicy Policy
-	err := ctx.ShouldBindJSON(&newPolicy)
+	err := ctx.ShouldBindJSON(&policy)
 	if err != nil {
 		ctx.String(http.StatusBadRequest, err.Error())
 	}
-
-	policy = newPolicy
 }
 
 func GetInfo(ctx *gin.Context) {
@@ -189,19 +169,18 @@ func PatchLedConfig(ctx *gin.Context) {
 	if newLedConfig.LedCount.Valid {
 		ledConfig.LedCount = newLedConfig.LedCount
 	}
+}
 
-	if newLedConfig.HueRange != nil {
-		if newLedConfig.HueRange.From.Valid {
-			ledConfig.HueRange.From = newLedConfig.HueRange.From
-		}
-		if newLedConfig.HueRange.To.Valid {
-			ledConfig.HueRange.To = newLedConfig.HueRange.To
-		}
-		if newLedConfig.HueRange.Section.Valid {
-			ledConfig.HueRange.Section = newLedConfig.HueRange.Section
-		}
+func PutLedConfig(ctx *gin.Context) {
+	resetMutex.Lock()
+	defer resetMutex.Unlock()
+
+	err := ctx.ShouldBindJSON(&ledConfig)
+	if err != nil {
+		ctx.String(http.StatusBadRequest, err.Error())
 	}
 }
+
 
 func GetNetworkConfig(ctx *gin.Context) {
 	resetMutex.Lock()
@@ -213,13 +192,40 @@ func PutNetworkConfig(ctx *gin.Context) {
 	resetMutex.Lock()
 	defer resetMutex.Unlock()
 
+	err := ctx.ShouldBindJSON(&networkConfig)
+	if err != nil {
+		ctx.String(http.StatusBadRequest, err.Error())
+	}
+
+	time.Sleep(5 * time.Second)
+}
+
+func PatchNetworkConfig(ctx *gin.Context) {
+	resetMutex.Lock()
+	defer resetMutex.Unlock()
+
 	var newNetworkConfig NetworkConfig
 	err := ctx.ShouldBindJSON(&newNetworkConfig)
 	if err != nil {
 		ctx.String(http.StatusBadRequest, err.Error())
 	}
 
-	networkConfig = newNetworkConfig
+	if newNetworkConfig.ApSsid.Valid {
+		networkConfig.ApSsid = newNetworkConfig.ApSsid
+	}
+
+	if newNetworkConfig.ApPassword.Valid {
+		networkConfig.ApPassword = newNetworkConfig.ApPassword
+	}
+
+	if newNetworkConfig.StaSsid.Valid {
+		networkConfig.StaSsid = newNetworkConfig.StaSsid
+	}
+
+	if newNetworkConfig.StaPassword.Valid {
+		networkConfig.StaPassword = newNetworkConfig.StaPassword
+	}
+
 	time.Sleep(5 * time.Second)
 }
 
@@ -248,21 +254,25 @@ func main() {
 
 	root := router.Group("")
 	root.GET("/static/*Filename", GetFile)
-	root.GET("/ping", GetPing)
-	root.GET("/policy", GetPolicy)
-	root.PUT("/policy", PutPolicy)
-	root.GET("/info", GetInfo)
 
-	led := root.Group("/led")
+	v0 := root.Group("/v0")
+	v0.GET("/ping", GetPing)
+	v0.GET("/policy", GetPolicy)
+	v0.PUT("/policy", PutPolicy)
+	v0.GET("/info", GetInfo)
+
+	led := v0.Group("/led")
 	led.GET("/config", GetLedConfig)
+	led.PUT("/config", PutLedConfig) // Deprecated
 	led.PATCH("/config", PatchLedConfig)
 
-	network := root.Group("/network")
+	network := v0.Group("/network")
 	network.GET("/config", GetNetworkConfig)
 	network.PUT("/config", PutNetworkConfig)
+	network.PATCH("/config", PatchNetworkConfig) // Deprecated
 
-	update := root.Group("/update")
-	update.GET("/check", GetUpdateCheck)
+	update := v0.Group("/update")
+	update.GET("/list", GetUpdateCheck)
 	update.GET("/perform", GetUpdatePerform)
 
 	router.Run(":8080")
