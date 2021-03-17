@@ -106,6 +106,7 @@ input {
   margin: 0 !important;
   border: 0.1px solid;
   outline: none;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .slidecontainer p {
