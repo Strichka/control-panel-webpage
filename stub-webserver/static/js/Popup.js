@@ -3,7 +3,7 @@ window.addEventListener('load', (event) => {
 
 
     var GETpolicy = new XMLHttpRequest();
-    GETpolicy.open("GET", '/policy', true);
+    GETpolicy.open("GET", '/v0/policy', true);
     GETpolicy.send();
 
     GETpolicy.onreadystatechange = function () {
@@ -12,7 +12,7 @@ window.addEventListener('load', (event) => {
             var policyResponse = JSON.parse(this.responseText)
             console.log(policyResponse.is_initialized)
 
-            if (policyResponse.is_initialized === false) {
+            if (policyResponse.accepted === false || policyResponse.accepted === null) {
 
 
 
@@ -27,14 +27,14 @@ window.addEventListener('load', (event) => {
                 document.getElementById('Agree').addEventListener('click', () => {
                     popup.parentNode.removeChild(popup);
                     var ACCEPTpolicy = new XMLHttpRequest();
-                    ACCEPTpolicy.open("PUT", '/policy', true);
-                    console.log(JSON.stringify({is_initialized: true,is_accepted: true}));
+                    ACCEPTpolicy.open("PUT", '/v0/policy', true);
+                    console.log(JSON.stringify({accepted: true}));
                 });
                 document.getElementById('Disagree').addEventListener('click', () => {
                     popup.parentNode.removeChild(popup);
                     var DECLINEpolicy = new XMLHttpRequest();
-                    DECLINEpolicy.open("PUT", '/policy', true);
-                    DECLINEpolicy.send(JSON.stringify({is_initialized: false,is_accepted: false}));
+                    DECLINEpolicy.open("PUT", '/v0/policy', true);
+                    DECLINEpolicy.send(JSON.stringify({accepted: false}));
                 });
             }
         }

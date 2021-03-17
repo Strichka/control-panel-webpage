@@ -6,7 +6,7 @@ window.addEventListener('load', (event) => {
     console.log('info loaded');
 
     GETinfo = new XMLHttpRequest();
-    GETinfo.open("GET","/info",true);
+    GETinfo.open("GET","/v0/info",true);
     GETinfo.send();
     
     GETinfo.onreadystatechange = function () {

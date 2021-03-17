@@ -18,7 +18,7 @@ window.addEventListener('load', (event) => {
     checkscrn();
 
     var GETsliders = new XMLHttpRequest();
-    GETsliders.open("GET", '/led/config', true);
+    GETsliders.open("GET", '/v0/led/config', true);
     GETsliders.send();
 
     GETsliders.onreadystatechange = function () {
@@ -116,7 +116,7 @@ sliders.forEach((element, i) => {
 let ChangeSlideData = ((element, i) => {
 
     var changeData = new XMLHttpRequest();
-    changeData.open("PATCH", '/led/config', true);
+    changeData.open("PATCH", '/v0/led/config', true);
 
     let val = sliderSettings;
     //place to modify data for server V

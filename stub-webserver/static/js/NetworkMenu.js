@@ -8,7 +8,7 @@ window.addEventListener('load', (event) => {
     
 
     var GETnetConf = new XMLHttpRequest();
-    GETnetConf.open("GET", '/network/config', true);
+    GETnetConf.open("GET", '/v0/network/config', true);
     GETnetConf.send();
 
     GETnetConf.onreadystatechange = function () {
@@ -29,7 +29,7 @@ window.addEventListener('load', (event) => {
 NetSubmitButton.addEventListener("click",(event) => {
     var isValidData = true;
     var SETnetConfig = new XMLHttpRequest();
-    SETnetConfig.open("PUT", '/network/config', true);
+    SETnetConfig.open("PUT", '/v0/network/config', true);
     var NetConfObj ={};
     NetConf.forEach((element,i) => {
         if(isASCII(NetConf[i].value)){

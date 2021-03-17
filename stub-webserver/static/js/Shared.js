@@ -16,17 +16,16 @@ function PingServer(){
 LoadingFunction();
 
 var PINGserver = new XMLHttpRequest();
-PINGserver.open("GET", '/ping', true);
+PINGserver.open("GET", '/v0/ping', true);
 PINGserver.send();
 setTimeout(function() {
 console.log("ping");
 PINGserver.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-        var pong = JSON.parse(this.responseText);
-        if(pong.pong=== true){
+        
         document.location.reload();
     }
-    }
+    
     else{PingServer();}
 
 };
