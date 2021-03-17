@@ -9,7 +9,7 @@ import (
 )
 
 type Policy struct {
-	Accepted    null.Bool `json:"accepted"`
+	Accepted null.Bool `json:"accepted"`
 }
 
 type Info struct {
@@ -38,7 +38,7 @@ type LedConfig struct {
 	Brightness null.Int `json:"brightness"`
 	Speed      null.Int `json:"speed"`
 	Width      null.Int `json:"width"`
-	LedCount null.Int `json:"led_count"`
+	LedCount   null.Int `json:"led_count"`
 }
 
 type NetworkConfig struct {
@@ -51,11 +51,11 @@ type NetworkConfig struct {
 type UpdateCheck struct {
 	Found            null.Bool   `json:"found"`
 	ErrorDescription null.String `json:"error_description"`
-	Updates          *[]Update `json:"updates"`
+	Updates          *[]Update   `json:"updates"`
 }
 
 var policy = Policy{
-	Accepted:    null.Bool{Valid: false},
+	Accepted: null.Bool{Valid: false},
 }
 
 var info = Info{
@@ -73,7 +73,7 @@ var ledConfig = LedConfig{
 	Brightness: null.Int{255, true},
 	Speed:      null.Int{65535, true},
 	Width:      null.Int{65535, true},
-	LedCount: null.Int{100, true},
+	LedCount:   null.Int{100, true},
 }
 
 var networkConfig = NetworkConfig{
@@ -86,10 +86,27 @@ var networkConfig = NetworkConfig{
 var updateCheck = UpdateCheck{
 	Found:            null.Bool{true, true},
 	ErrorDescription: null.String{"", false},
-	Updates:          &[]Update{{
-		FirmwareVersion: null.String{"0.0.1", true},
-		ChangeList:      null.String{"update!", true},
-	}},
+	Updates: &[]Update{
+		{
+			FirmwareVersion: null.String{"0.0.1", true},
+			ChangeList:      null.String{"update!", true},
+		},
+		{
+			FirmwareVersion: null.String{"0.0.2", true},
+			ChangeList:      null.String{"update!", true},
+		},
+		{
+			FirmwareVersion: null.String{"0.0.3", true},
+			ChangeList:      null.String{"update!", true},
+		},
+		{
+			FirmwareVersion: null.String{"0.0.4", true},
+			ChangeList:      null.String{"update!", true},
+		},
+		{
+			FirmwareVersion: null.String{"0.0.5", true},
+			ChangeList:      null.String{"update!", true},
+		}},
 }
 
 var resetMutex = sync.Mutex{}
@@ -180,7 +197,6 @@ func PutLedConfig(ctx *gin.Context) {
 		ctx.String(http.StatusBadRequest, err.Error())
 	}
 }
-
 
 func GetNetworkConfig(ctx *gin.Context) {
 	resetMutex.Lock()
