@@ -57,12 +57,20 @@
 .Popup .textbox .UpdateList {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
   -ms-grid-rows: auto;
       grid-template-rows: auto;
   width: 90%;
   overflow-y: scroll;
+  max-height: 50%;
+  overflow-y: scroll;
+  /* :nth-child(2n){
+                border-radius: 0 15px 15px 0;
+            }
+            :nth-child(2n-1){
+                border-radius: 15px 0 0 15px;
+            }*/
 }
 
 .Popup .textbox .UpdateList :nth-child(1n) {
@@ -73,23 +81,35 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  border-radius: 15px;
 }
 
-.Popup .textbox .UpdateList :nth-child(2n) {
-  border-radius: 0 15px 15px 0;
+.Popup .textbox .UpdateList :nth-child(1n) :first-child {
+  margin-right: 10px;
 }
 
-.Popup .textbox .UpdateList :nth-child(2n-1) {
-  border-radius: 15px 0 0 15px;
+.Popup .textbox .UpdateList :nth-child(1n) :nth-child(1n) {
+  border-radius: 0;
+  border: none;
+}
+
+.Popup .textbox .button {
+  border-radius: 10px;
+  margin: 5px;
+  color: white;
+  font-size: small;
+  text-shadow: 1px 1px black;
+  width: 100%;
 }
 
 .Popup .textbox .popupButtonPanel {
@@ -100,6 +120,19 @@
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+}
+
+@media (max-width: 450px) {
+  .Popup .textbox .popupButtonPanel {
+    width: 90%;
+    margin-left: 0;
+    height: 60px;
+  }
+  .Popup .textbox .popupButtonPanel .button {
+    margin: 0px;
+    font-size: smaller;
+  }
 }
 
 .Popup .textbox .popupButtonPanel :last-child {
@@ -116,14 +149,6 @@
 
 .Popup .textbox .popupButtonPanel :is(#Disagree, #DisagreeUpd) {
   background-color: crimson;
-}
-
-.Popup .textbox .button {
-  border-radius: 10px;
-  margin: 5px;
-  color: white;
-  font-size: small;
-  text-shadow: 1px 1px black;
 }
 
 :is(#Agree, #AgreeUpd, #AgreeClosePopup) {

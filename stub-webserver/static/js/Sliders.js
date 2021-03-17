@@ -32,7 +32,7 @@ window.addEventListener('load', (event) => {
             SetArray[1] = sliderSettings.speed; 
             SetArray[2] = sliderSettings.width;
             SetArray[3] = sliderSettings.led_count;
-
+            SetArray[4] = sliderSettings.mode_index;
             sliders.forEach((element,i) => {
                 if(i==0){
                 element.value = SetArray[i] * 100 / 255;
@@ -133,9 +133,16 @@ let ChangeSlideData = ((element, i) => {
         
         //width and speed
     }
-    else {
-        val[Object.keys(sliderSettings)[i + 2]] = parseInt(element.value, 10);
+    else if(i == 4){
+        val[Object.keys(sliderSettings)[0]] = parseInt(element.value, 10);
+        //mode
     }
+    else {
+        //led
+        console.log(i);
+        val[Object.keys(sliderSettings)[i + 1]] = parseInt(element.value, 10);
+    }
+
     //use formulas here ^
     console.log(val);
     changeData.send(JSON.stringify(val));
@@ -198,11 +205,11 @@ function checkscrn(){
     
     PLUSbtn.addEventListener('mousedown', continuosIncerment);
             PLUSbtn.addEventListener('mouseup', timeoutClear);
-            PLUSbtn.addEventListener('mouseleave', timeoutClear);
+           // PLUSbtn.addEventListener('mouseleave', timeoutClear);
         
             MINUSbtn.addEventListener('mousedown', continuosDecerment);
             MINUSbtn.addEventListener('mouseup', timeoutClear);
-            MINUSbtn.addEventListener('mouseleave', timeoutClear);
+           // MINUSbtn.addEventListener('mouseleave', timeoutClear);
 
 
     window.addEventListener('touchstart', function touchDetector() {
@@ -210,11 +217,11 @@ function checkscrn(){
         isTouch = true;
         PLUSbtn.removeEventListener('mousedown', continuosIncerment);
         PLUSbtn.removeEventListener('mouseup', timeoutClear);
-        PLUSbtn.removeEventListener('mouseleave', timeoutClear);
+        //PLUSbtn.removeEventListener('mouseleave', timeoutClear);
     
         MINUSbtn.removeEventListener('mousedown', continuosDecerment);
         MINUSbtn.removeEventListener('mouseup', timeoutClear);
-        MINUSbtn.removeEventListener('mouseleave', timeoutClear);
+       // MINUSbtn.removeEventListener('mouseleave', timeoutClear);
             touchctrl();
         window.removeEventListener('touchstart', touchDetector);
     });
@@ -262,7 +269,7 @@ ModeSelectors.forEach((element ,i) => {
         {
         ModeSelectors[i].classList.add("Active");
         ModeSelectors[i].value = i;
-        ChangeSlideData(ModeSelectors[i],-2)
+        ChangeSlideData(ModeSelectors[i],4)
             ModeSelectors.forEach((element,i) => {
                 if(ModeIndex !== i){
                     element.classList.remove("Active");

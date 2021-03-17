@@ -10,9 +10,9 @@ window.addEventListener('load', (event) => {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText)
             var policyResponse = JSON.parse(this.responseText)
-            console.log(policyResponse.is_initialized)
+            console.log(policyResponse.accepted)
 
-            if (policyResponse.accepted === false || policyResponse.accepted === null) {
+            if (policyResponse.accepted == false || policyResponse.accepted == null) {
 
 
 
@@ -29,6 +29,7 @@ window.addEventListener('load', (event) => {
                     var ACCEPTpolicy = new XMLHttpRequest();
                     ACCEPTpolicy.open("PUT", '/v0/policy', true);
                     console.log(JSON.stringify({accepted: true}));
+                    ACCEPTpolicy.send(JSON.stringify({accepted: true}));
                 });
                 document.getElementById('Disagree').addEventListener('click', () => {
                     popup.parentNode.removeChild(popup);

@@ -6,7 +6,7 @@ UpdatesButton.addEventListener("click", (event) => {
 
 
     var GETupdates = new XMLHttpRequest();
-    GETupdates.open("GET", '/update/check', true);
+    GETupdates.open("GET", '/v0/update/list', true);
     GETupdates.send();
 
     GETupdates.onreadystatechange = function () {
@@ -26,17 +26,25 @@ UpdatesButton.addEventListener("click", (event) => {
                 popup.className = "Popup";
             document.body.appendChild(popup);
             var UpdateList = document.getElementById('UpdateList');
-            
+            let updateLines = []; 
+            for(let i = UpdateResponse.updates.length -1 ;i>-1;i--){
+                updateLines[i] = document.createElement('div')
+                var updateitems = UpdateResponse.updates[i]["firmware_version"];
+                
+                UpdateList.appendChild(updateLines[i]);
+                updateLines[i].innerHTML= "<span>"+ updateitems  +"</span>" + "<span>"+ UpdateResponse.updates[i]["change_list"] +"</span>";
+                console.log(updateLines[i]);
+            }
             console.log(UpdateResponse.updates[UpdateResponse.updates.length-1]["firmware_version"]);
-            var updateitems= UpdateResponse.updates[UpdateResponse.updates.length-1]["firmware_version"];
-            UpdateList.innerHTML= "<span>"+ updateitems  +"</span>" + "<span>"+ UpdateResponse.updates[0]["change_list"]  +"</span>";
+           // var updateitems= UpdateResponse.updates[UpdateResponse.updates.length-1]["firmware_version"];
+            //UpdateList.innerHTML= "<span>"+ updateitems  +"</span>" + "<span>"+ UpdateResponse.updates[0]["change_list"]  +"</span>";
                 agreeUpd = document.getElementById('AgreeUpd');
                 denyUpd = document.getElementById('DisagreeUpd');
 
                 agreeUpd.addEventListener("click", (event) => {
 
                     askUpdate = new XMLHttpRequest();
-                    askUpdate.open('GET', '/update/perform',true);
+                    askUpdate.open('GET', '/v0/update/perform',true);
                     askUpdate.send();
 
                     PingServer();

@@ -34,36 +34,68 @@
         }
         .UpdateList{
             display:grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             grid-template-rows: auto;
             width: 90%;
             overflow-y: scroll;
+            max-height: 50%;
+
+            overflow-y: scroll;
+            
             :nth-child(1n){
+                :first-child{
+                    margin-right: 10px;
+                }
                 border-radius: 15px;
                 font-size: small;
                 text-align: center;
                 border: solid 1px lightgray;
                 display: flex;
-                justify-content: center;
+                justify-content: space-around;
                 align-items: center;
+                flex-wrap: nowrap;
                 height:fit-content;
+                border-radius: 15px;
+                
+                :nth-child(1n){
+                    border-radius: 0;
+                    border: none;
+                }
                 
 
             }
-            :nth-child(2n){
+           /* :nth-child(2n){
                 border-radius: 0 15px 15px 0;
             }
             :nth-child(2n-1){
                 border-radius: 15px 0 0 15px;
-            }
+            }*/
         }
-       
+        .button{
+            border-radius: 10px;
+            margin: 5px;
+            color:white;
+            font-size: small;
+            text-shadow: 1px 1px black;
+            width:100%;
+        }
         .popupButtonPanel{
             width:75%;
             height:40px;
             margin-left: 15%;
             display: grid;
             grid-template-columns: 1fr 1fr;
+            grid-gap: 5px;
+            
+            @media(max-width: 450px){
+                width:90%;
+                margin-left: 0;
+                height:60px;
+                .button{
+                    margin: 0px;
+                font-size: smaller;
+            }
+            }
             :last-child{
                 background-color: crimson;
             }
@@ -80,13 +112,7 @@
                 
             }
         }
-        .button{
-            border-radius: 10px;
-            margin: 5px;
-            color:white;
-            font-size: small;
-            text-shadow: 1px 1px black;
-        }
+       
     }
 
 
