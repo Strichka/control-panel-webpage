@@ -21,10 +21,11 @@ UpdatesButton.addEventListener("click", (event) => {
 
             body = document.getElementById("Body")
             var popup = document.createElement("div");
-            if (UpdateResponse.found === true) {
-                popup.innerHTML = "<div class='textbox'>Найдены обновления!<div class='UpdateList' id='UpdateList'></div><div class='popupButtonPanel'><button class='button' id='AgreeUpd'>Обновить</button><button class='button' id='DisagreeUpd'>Не обновлять</button></div></div>";
+            if (UpdateResponse.found === false) {// pomenat!
+                popup.innerHTML = "<div class='textbox updatePopupTranslatePool'>Найдены обновления!<div class='UpdateList' id='UpdateList'></div><div class='popupButtonPanel'><button class='button updatePopupTranslatePool' id='AgreeUpd'>Обновить</button><button class='button updatePopupTranslatePool' id='DisagreeUpd'>Не обновлять</button></div></div>";
                 popup.className = "Popup";
             document.body.appendChild(popup);
+            TranslateAll();
             var UpdateList = document.getElementById('UpdateList');
             let updateLines = []; 
             for(let i = UpdateResponse.updates.length -1 ;i>-1;i--){
@@ -64,10 +65,10 @@ UpdatesButton.addEventListener("click", (event) => {
 
             }
             else{
-                popup.innerHTML = "<div class='textbox'>У вас последняя версия!<div class='UpdateList' id='UpdateList'></div><div class='popupButtonPanel'><button class='button' id='AgreeClosePopup'>Хорошо</button></div>";
+                popup.innerHTML = "<div class='textbox noUpdatePopupTranslatePool'>У вас последняя версия!<div class='UpdateList' id='UpdateList'></div><div class='popupButtonPanel' style='direction: rtl;'><button class='button noUpdatePopupTranslatePool' id='AgreeClosePopup'>Хорошо</button></div>";
                 popup.className = "Popup";
             document.body.appendChild(popup);
-
+                TranslateAll();
             agreeClosePopup = document.getElementById('AgreeClosePopup');
             agreeClosePopup.addEventListener("click", (event) =>{
 

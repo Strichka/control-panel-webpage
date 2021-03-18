@@ -37,11 +37,12 @@ PINGserver.onreadystatechange = function () {
 var PreloadPopUp = () =>{
     body = document.getElementById("Body")
     popup = document.createElement("div");
-    popup.innerHTML = "<div class='textbox LoadPopUp'> Перезагрузка! <img src='/static/media/Loading.gif' ></div>";
+    popup.innerHTML = "<div class='textbox LoadPopUp loadingPopupTranslatePool'> Перезагрузка! <img src='/static/media/Loading.gif' ></div>";
     popup.className = "Popup";
 }
 var LoadingFunction = () =>{
     document.body.appendChild(popup);
+    TranslateAll();
 }
 function enforce_maxlength(event) {
     var t = event.target;

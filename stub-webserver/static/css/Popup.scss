@@ -4,27 +4,32 @@
 
     top:0px;
     left:0%;
-    height:100%;
+    min-height:100%;
     width:100%;
     max-width: 100%;
     background-color: rgba(0,0,0,0.5);
     display:flex;
     align-items: center;
     justify-content: center;
+    
     .textbox{
-        
+        span{
+            overflow-y: scroll;
+        }
         display:flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
         max-width: 500px;
         width:80%;
-        height: 40%;
-        max-height: 400px;
+        min-height: 200px;
+        //max-height: 400px;
         background-color: white;
         border-radius: 15px;
         padding: 10px;
         font-size: x-large;
+        word-break: break-all;
+        
         img{
             object-fit:fill;
         }

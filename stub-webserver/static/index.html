@@ -33,7 +33,7 @@
         <input type="range" id="brightnesSlider" min="0" max="100" value="50" class="slider" name="rangeInput" >
        
         <span>100</span>
-        <p>Яркость: <span class="SlideOut"></span></p>
+        <p class="sliderTranslatePool">Яркость: <span class="SlideOut"></span></p>
       </div>
       
       <div class="slidecontainer">
@@ -41,7 +41,7 @@
         <span>0.25</span>
         <input type="range" id="speedSlider" min="0" max="65535" value="50" class="slider" name="rangeInput">
         <span>4</span>
-        <p>Скорость: <span class="SlideOut"></span></p>
+        <p class="sliderTranslatePool">Скорость: <span class="SlideOut"></span></p>
       </div>
       
       
@@ -51,7 +51,7 @@
         <span>0.25</span>
         <input type="range" min="0" id="widthSlider" max="65535" value="50" class="slider" name="rangeInput">
         <span>4</span>
-        <p>Ширина: <span class="SlideOut"></span></p>
+        <p class="sliderTranslatePool">Ширина: <span class="SlideOut"></span></p>
       </div>
    
       
@@ -64,7 +64,7 @@
           <div class="LEDbtn" id=PLUSbtn><span>+</span></div>
 
         </div>
-        <p>Количество светодиодов: <span class="SlideOut"></span></p>
+        <p class="sliderTranslatePool">Количество светодиодов: <span class="SlideOut"></span></p>
       </div>
       
       <!--<div class="WheelGrid">
@@ -94,12 +94,12 @@
         <li class="dropdown">
           <input type="checkbox" />
           <hr class="borderLine" >
-          <a  data-toggle="dropdown">Режимы</a>
+          <a  data-toggle="dropdown" class="menuTranslatePool">Режимы</a>
           <hr class="borderLine" >
           <ul class="dropdown-menu">
-            <div class="ModeSelector"><div name="ModeSelector" class='NetworkSettingSubmit'href="#">Режим 1</div></div>
-             <div class="ModeSelector"><div name="ModeSelector" class='NetworkSettingSubmit' href="#">Режим 2</div></div>
-             <div class="ModeSelector"><div name="ModeSelector" class='NetworkSettingSubmit' href="#">Режим 3</div></div>
+            <div class="ModeSelector"><div name="ModeSelector" class='NetworkSettingSubmit menuTranslatePool'href="#">Режим 1</div></div>
+             <div class="ModeSelector"><div name="ModeSelector" class='NetworkSettingSubmit menuTranslatePool' href="#">Режим 2</div></div>
+             <div class="ModeSelector"><div name="ModeSelector" class='NetworkSettingSubmit menuTranslatePool' href="#">Режим 3</div></div>
              <hr class="borderLine" >
           </ul>
         </li>
@@ -110,28 +110,28 @@
         <li class="dropdown">
           <input type="checkbox" />
           
-          <a  data-toggle="dropdown">Сеть</a>
+          <a  data-toggle="dropdown" class="menuTranslatePool">Сеть</a>
           <hr class="borderLine" >
           <ul class="dropdown-menu">
             <li>
-              <div class='NetworkSetting'><span>Имя сети</span><input type="text" id="NetName" name=NetConf></input>
+              <div class='NetworkSetting'><span class="menuTranslatePool">Имя сети</span><input type="text" id="NetName" name=NetConf></input>
               </div>
             </li>
             <li>
-              <div class='NetworkSetting'><span>Пароль сети</span><input type="password" id="NetPass"
+              <div class='NetworkSetting'><span class="menuTranslatePool">Пароль сети</span><input type="password" id="NetPass"
                   name=NetConf></input></div>
             </li>
             <li>
-              <div class='NetworkSetting'><span>Имя локальной сети</span><input type="text" id="LocName"
+              <div class='NetworkSetting'><span class="menuTranslatePool">Имя локальной сети</span><input type="text" id="LocName"
                   name=NetConf></input></div>
             </li>
             <li>
-              <div class='NetworkSetting'><span>Пароль локальной сети</span><input type="password" id="LocPass"
+              <div class='NetworkSetting'><span class="menuTranslatePool">Пароль локальной сети</span><input type="password" id="LocPass"
                   name=NetConf></input></div>
             </li>
             <li>
               <div class='NetworkSetting'>
-                <div class='NetworkSettingSubmit' href="#" id="NetSubmit"><span>Сохранить</span></div>
+                <div class='NetworkSettingSubmit' href="#" id="NetSubmit"><span class="menuTranslatePool">Сохранить</span></div>
               </div>
             </li>
             <hr class="borderLine" >
@@ -140,12 +140,12 @@
         <li class="dropdown">
           <input type="checkbox" />
           
-          <a  data-toggle="dropdown">Обновления</a>
+          <a  data-toggle="dropdown" class="menuTranslatePool">Обновления</a>
           <hr class="borderLine" >
           <ul class="dropdown-menu">
             <li>
               <div class='NetworkSetting'>
-                <div class='NetworkSettingSubmit' id="UpdatePop"><span>Проверить обновления</span></div>
+                <div class='NetworkSettingSubmit' id="UpdatePop"><span class="menuTranslatePool">Проверить обновления</span></div>
               </div>
             </li>
          
@@ -155,7 +155,7 @@
         <li class="dropdown">
           <input type="checkbox" />
           
-          <a data-toggle="dropdown">Информация</a>
+          <a data-toggle="dropdown" class="menuTranslatePool">Информация</a>
           <hr class="borderLine" >
           <ul class="dropdown-menu">
             <div class="infoTable" id="infoTab">
@@ -174,6 +174,7 @@
 
 
   </main>
+  <script src=/static/js/Translate.js></script>
   <script src=/static/js/Popup.js></script>
   <script src=/static/js/Shared.js></script>
   <script src=/static/js/Sliders.js></script>
