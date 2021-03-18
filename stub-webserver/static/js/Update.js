@@ -21,7 +21,7 @@ UpdatesButton.addEventListener("click", (event) => {
 
             body = document.getElementById("Body")
             var popup = document.createElement("div");
-            if (UpdateResponse.found === false) {// pomenat!
+            if (UpdateResponse.found === true) {// pomenat!
                 popup.innerHTML = "<div class='textbox updatePopupTranslatePool'>Найдены обновления!<div class='UpdateList' id='UpdateList'></div><div class='popupButtonPanel'><button class='button updatePopupTranslatePool' id='AgreeUpd'>Обновить</button><button class='button updatePopupTranslatePool' id='DisagreeUpd'>Не обновлять</button></div></div>";
                 popup.className = "Popup";
             document.body.appendChild(popup);

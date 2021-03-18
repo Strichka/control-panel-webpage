@@ -127,3 +127,14 @@ window.addEventListener('load', (event) => {
 
 
 });
+
+//кнопки
+let langlist = ["ENG","UA","RU"]
+let langButtons = document.getElementById("langPanel");
+langButtons.childNodes.forEach((element,i) =>{
+    element.addEventListener("click", (event)=>{
+
+        TranslateAll(langlist[i]);
+    })
+
+})
