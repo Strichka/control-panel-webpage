@@ -42,7 +42,7 @@
   word-break: break-all;
 }
 
-.Popup .textbox span {
+.Popup .textbox .policyspan {
   overflow-y: scroll;
 }
 
