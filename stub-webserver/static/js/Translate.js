@@ -38,7 +38,7 @@ const uaDictionary = {
 
 
 
-let currDictionary = russDictionary;
+let currDictionary = engDictionary;
 let langSelected = "ENG";
 
 function SetLanguage(lang){
@@ -122,6 +122,10 @@ function defaultLang(str){
 window.addEventListener('load', (event) => {
     
     defaultLang(navigator.language);
+    console.log("===============ACHTUNG!!!================")
+    
+    console.log(navigator.language);
+    console.log("===============ACHTUNG!!!================")
     TranslateAll(langSelected);
     
 

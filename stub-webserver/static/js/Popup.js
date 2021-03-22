@@ -12,7 +12,7 @@ window.addEventListener('load', (event) => {
             var policyResponse = JSON.parse(this.responseText)
             console.log(policyResponse.accepted)
 
-            if (policyResponse.accepted == true || /*первое убрать*/policyResponse.accepted == false || policyResponse.accepted == null) {
+            if (/*policyResponse.accepted == true ||*/ /*первое убрать*/policyResponse.accepted == false || policyResponse.accepted == null) {
 
 
 
