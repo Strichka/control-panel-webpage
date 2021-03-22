@@ -82,6 +82,7 @@ else{
 }
 
 function TranslateAll(lang = langSelected){
+    langSelected = lang;
     SetLanguage(lang);
     TranslateList(slidersText,GetDict("sliders"));
     TranslateList(menuText,GetDict("menu"));
@@ -127,6 +128,7 @@ window.addEventListener('load', (event) => {
     console.log(navigator.language);
     console.log("===============ACHTUNG!!!================")
     TranslateAll(langSelected);
+    langButtons.childNodes[langlist.indexOf(langSelected)].classList.add("Active");
     
 
 
@@ -139,6 +141,23 @@ langButtons.childNodes.forEach((element,i) =>{
     element.addEventListener("click", (event)=>{
 
         TranslateAll(langlist[i]);
+        makeLangButtonActive(i);
+
     })
 
 })
+//выбор активной кнопки
+let makeLangButtonActive = (i) =>{
+    if (!(langButtons.childNodes[i].classList.contains("Active"))) {
+        langButtons.childNodes[i].classList.add("Active");
+        console.log("made active")
+        //ModeSelectors[i].value = i;
+        //ChangeSlideData(ModeSelectors[i], 4)
+        langButtons.childNodes.forEach((element, i) => {
+            if (langSelected !== langlist[i]) {
+                element.classList.remove("Active");
+            }
+
+});
+    }
+}

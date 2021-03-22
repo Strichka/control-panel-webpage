@@ -32,24 +32,29 @@ body {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  max-height: 40px;
+  max-height: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 10px;
 }
 
 .langPanel img {
+  opacity: 0.5;
   margin-left: 10px;
-  max-width: 40px;
-  max-height: 40px;
+  margin-right: 10px;
+  max-width: 30px;
+  max-height: 30px;
+}
+
+.langPanel img.Active {
+  opacity: 1;
 }
 
 main, header {
