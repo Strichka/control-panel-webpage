@@ -29,40 +29,6 @@ input {
   background-color: #c8c8c8;
 }
 
-/* &::before{
-      
-      max-width: 500px;
-      position: absolute;
-      color: #777;
-      content: '4';
-      padding-right: 1%;
-      //padding: 40px;
-      word-spacing:normal;
-      left: 91%;
-      font-size: larger;
-      top: -3px;
-      text-align: right; 
-     // background-color: aqua;
-      z-index: -1;
-      
-    }
-
-    &::after{
-      
-      max-width: 500px;
-      position: absolute;
-      color: #777;
-      padding-left: 1%;
-      content: '0.5';
-      //padding: 40px;
-      word-spacing:normal;
-      left: 4.5%;
-      font-size: larger;
-      top: -3px;
-     // background-color: aqua;
-      z-index: -1;
-      
-    }*/
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 18px;

@@ -84,17 +84,9 @@ input[type="checkbox"]:focus{
 .dropdown [data-toggle=dropdown] {
   display: block;
   color: rgb(0, 0, 0);
-  //background: #c0392b;
   background: white;
-  
-  
-
-  //
-  //-webkit-box-shadow: 0 1px 0 #a7a7a7 inset, 0 -1px 0 #000000 inset;
-  //-moz-box-shadow: 0 1px 0 #a7a7a7 inset, 0 -1px 0 #000000 inset;
-  //box-shadow: 0 1px 0 #a7a7a7 inset, 0 -1px 0 #000000 inset;
-  //text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
   padding: 10px;
+
 }
 
 .dropdown [data-toggle=dropdown]:before {
@@ -151,7 +143,7 @@ input[type="checkbox"]:focus{
   -moz-box-shadow: 0 1px 0 white inset, 0 -1px 0 #d5d5d5 inset;
   box-shadow: 0 1px 0 white inset, 0 -1px 0 #d5d5d5 inset;
   text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.3);
-  //padding: 10px 10px;
+
 }
 .dropdown > .dropdown-menu li a:hover {
   background: #f6f6f6;

@@ -1,54 +1,24 @@
-
-
-
 let sliders = document.querySelectorAll('input[name=rangeInput]');
 let PLUSbtn = document.getElementById("PLUSbtn");
 let MINUSbtn = document.getElementById("MINUSbtn");
-
 var output = document.querySelectorAll("span.SlideOut");
 let Dropmenu = document.getElementById("Menu1");
-
 var ModeSelectors = document.getElementsByName('ModeSelector')
 var ModeIndex;
-
 var sliderSettings;
 
-//var cachedDataSent = null;
-
-/*function checkIfDataNew(currData,name){
-    if(cachedDataSent!=null){
-    if(currData[name] === cachedDataSent[name]){
-        console.log(currData[name]);
-        console.log(cachedDataSent[name]);
-        console.log("same");
-        cachedDataSent = currData;
-    }
-    else{
-        console.log("different");
-    }
-    }
-}
-*/
-
-
-
-//document.body.addEventListener('input', enforce_maxlength);
-window.addEventListener('load', (event) => {
+window.addEventListener('load', (event) => { //receiving data from server and syncing sliders with it by emulating mouseup event
 
     checkscrn();
 
     var GETsliders = new XMLHttpRequest();
     GETsliders.open("GET", '/v0/led/config', true);
     GETsliders.send();
-
     GETsliders.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
 
-            sliderSettings = JSON.parse(this.responseText)
-            console.log(sliderSettings);
+            sliderSettings = JSON.parse(this.responseText);
             let SetArray = [];
-            
-            //console.log("cached");
             SetArray[0] = sliderSettings.brightness;
             SetArray[1] = sliderSettings.speed;
             SetArray[2] = sliderSettings.width;
@@ -74,33 +44,20 @@ window.addEventListener('load', (event) => {
                     output[i].innerHTML = element.value;
                 }
             });
-
         }
     }
-
-
-
-
 });
-let arrS = [];
+
+let arrS = [];//array of dynamic styles for slider color
 sliders.forEach(element => {
     arrS.push(document.createElement("style"))
 });
-
-
 arrS.forEach(element => {
     document.head.appendChild(element);
 });
 
-output.forEach(element => {
-    element.innerHTML = '50';
-});
-
-console.log(output);
-
 sliders.forEach((element, i) => {
-    element.addEventListener("input", () => {
-
+    element.addEventListener("input", () => {//slider color change on input
         enforce_maxlength(event);
         arrS[i].textContent = ` .slidecontainer:nth-child(${i + 1}) .slider::-webkit-slider-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)} `
         if (i > 0 && i < 3) {
@@ -112,18 +69,14 @@ sliders.forEach((element, i) => {
         if (i == 3) {
             ChangeSlideData(element, i);
         }
-
     })
 });
 
 
 sliders.forEach((element, i) => {
-    element.addEventListener("mouseup", () => {
-
+    element.addEventListener("mouseup", () => {//slider color change  and data flow on release
         enforce_maxlength(event);
-        arrS[i].textContent = ` .slidecontainer:nth-child(${i + 1}) .slider::-webkit-slider-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)} `
-
-
+        arrS[i].textContent = ` .slidecontainer:nth-child(${i + 1}) .slider::-webkit-slider-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)} `;
         if (i > 0 && i < 3) {
             output[i].innerHTML = (Math.pow(2, (element.value / 16384 - 2))).toFixed(2);
         }
@@ -134,24 +87,19 @@ sliders.forEach((element, i) => {
     })
 });
 
-let ChangeSlideData = ((element, i) => {
-
+let ChangeSlideData = ((element, i) => {//patch slider settings 
     var changeData = new XMLHttpRequest();
     changeData.open("PATCH", '/v0/led/config', true);
-
     let val = sliderSettings;
     let changedName = "";
-    //place to modify data for server V
+
     if (i == 0) {
         let processedValue = element.value * 255 / 100
         val[Object.keys(sliderSettings)[i + 1]] = parseInt(processedValue, 10);
-        //brightness
         changedName = (Object.keys(sliderSettings)[i + 1]);
+        //brightness
     }
     else if (i < 3 && i > 0) {
-
-
-
         val[Object.keys(sliderSettings)[i + 1]] = parseInt(element.value, 10);
         changedName = (Object.keys(sliderSettings)[i + 1]);
         //width and speed
@@ -162,46 +110,24 @@ let ChangeSlideData = ((element, i) => {
         //mode
     }
     else {
-        //led
-        console.log(i);
         val[Object.keys(sliderSettings)[i + 1]] = parseInt(element.value, 10);
         changedName = (Object.keys(sliderSettings)[i + 1]);
-        
+        //led
     }
-
-    //use formulas here ^
-    
-    //console.log(changedName);
-    //checkIfDataNew(val,changedName);
-    
-    console.log(val);
     changeData.send(JSON.stringify(val));
 
 });
-//
-
-
-
-
-function SendLed() {
+function SendLed() {//emulating mouse up on led input to send data to shared event listener
     var event = new Event('mouseup', {});
     sliders[3].dispatchEvent(event);
 }
-
-
-
-
-
-
-
-
 
 let timer;
 let increment = 1;
 let decrement = 1;
 let wasChanged = false;
 
-function continuosIncerment() {
+function continuosIncerment() {//led input acceleration function
     if (sliders[3].value < parseInt(sliders[3].getAttribute('max'))) {
         sliders[3].value = parseInt(sliders[3].value) + 1;
         wasChanged = true;
@@ -209,11 +135,10 @@ function continuosIncerment() {
     if (increment < 10) {
         increment = increment + 2;
     }
-    console.log("+");
     timer = setTimeout(continuosIncerment, 500 - parseInt(increment * 40));
 }
 
-function continuosDecerment() {
+function continuosDecerment() {//led input acceleration function
     if (sliders[3].value > parseInt(sliders[3].getAttribute('min'))) {
         sliders[3].value = parseInt(sliders[3].value) - 1;
         wasChanged = true;
@@ -224,37 +149,30 @@ function continuosDecerment() {
     timer = setTimeout(continuosDecerment, 500 - parseInt(decrement * 40));
 }
 
-function timeoutClear() {
+function timeoutClear() {//stopping recursion of acceleration functions
     clearTimeout(timer);
     increment = -1;
     decrement = -1;
-    if(wasChanged == true){
-    SendLed();
-    wasChanged = false;
+    if (wasChanged == true) {
+        SendLed();
+        wasChanged = false;
     }
 }
 
-//touchscreen check
-function checkscrn() {
+function checkscrn() {//touchscreen check and according input changes
     var isTouch = false;
-
-
     PLUSbtn.addEventListener('mousedown', continuosIncerment);
     PLUSbtn.addEventListener('mouseup', timeoutClear);
     PLUSbtn.addEventListener('mouseleave', timeoutClear);
-
     MINUSbtn.addEventListener('mousedown', continuosDecerment);
     MINUSbtn.addEventListener('mouseup', timeoutClear);
     MINUSbtn.addEventListener('mouseleave', timeoutClear);
 
-
     window.addEventListener('touchstart', function touchDetector() {
-        alert("touch");
         isTouch = true;
         PLUSbtn.removeEventListener('mousedown', continuosIncerment);
         PLUSbtn.removeEventListener('mouseup', timeoutClear);
         PLUSbtn.removeEventListener('mouseleave', timeoutClear);
-
         MINUSbtn.removeEventListener('mousedown', continuosDecerment);
         MINUSbtn.removeEventListener('mouseup', timeoutClear);
         MINUSbtn.removeEventListener('mouseleave', timeoutClear);
@@ -270,10 +188,9 @@ function touchctrl() {
 
 }
 
-ModeSelectors.forEach((element, i) => {
+ModeSelectors.forEach((element, i) => {//mode selector active class juggling and click handling 
     element.addEventListener("click", () => {
         ModeIndex = i;
-        console.log(ModeSelectors);
         if (!(ModeSelectors[i].classList.contains("Active"))) {
             ModeSelectors[i].classList.add("Active");
             ModeSelectors[i].value = i;
@@ -282,12 +199,8 @@ ModeSelectors.forEach((element, i) => {
                 if (ModeIndex !== i) {
                     element.classList.remove("Active");
                 }
-
             });
-
-
         }
-
     });
 })
 

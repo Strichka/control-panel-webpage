@@ -69,12 +69,6 @@
   overflow-y: scroll;
   max-height: 50%;
   overflow-y: scroll;
-  /* :nth-child(2n){
-                border-radius: 0 15px 15px 0;
-            }
-            :nth-child(2n-1){
-                border-radius: 15px 0 0 15px;
-            }*/
 }
 
 .Popup .textbox .UpdateList :nth-child(1n) {
@@ -170,4 +164,4 @@
 .popupButtonPanel :last-child {
   background-color: crimson;
 }
-/*# sourceMappingURL=Popup.css.map */
+/*# sourceMappingURL=popup.css.map */
