@@ -2,7 +2,7 @@ const russDictionary = {
     sliders: ["Яркость: ", "Скорость: ", "Ширина: ", "Количество светодиодов: "],
     menu: [["Режимы", "Режим 1", "Режим 2", "Режим 3"],
     ["Сеть", "Имя сети", "Пароль сети", "Имя локальной сети", "Пароль локальной сети", "Сохранить"],
-    ["Обновления", "Проверить Обновления"],
+    /*["Обновления", "Проверить Обновления"],*/
     ["Информация"]],
     popup: ["Согласен? Lorem ipsum lorem ipsum lorem lorem, Согласен же?", "Принять", "Закрыть"],
     updatePopup: ["Есть обновления!", "Обновить", "Закрыть"],
@@ -14,7 +14,7 @@ const engDictionary = {
     sliders: ["Brightness: ", "Speed: ", "Width: ", "LED count: "],
     menu: [["Modes", "Mode 1", "Mode 2", "Mode 3"],
     ["Network", "Network Name", "Network Password", "Local network name", "Local Network Password", "Save"],
-    ["Updates", "Check Updates"],
+    /*["Updates", "Check Updates"],*/
     ["Info"]],
     popup: ["Accept it pls, Lorem ipsum lorem ipsum lorem lorem ", "Accept", "Close"],
     updatePopup: ["Found Updates!", "Update", "Close"],
@@ -26,7 +26,7 @@ const uaDictionary = {
     sliders: ["Яскравість: ", "Швидкість: ", "Ширина: ", "Кількіть Світлодіодів: "],
     menu: [["Режими", "Режим 1", "Режим 2", "Режим 3"],
     ["Мережа", "Ім'я мережі", "Пароль мережі", "Ім'я локальної мережі", "Пароль локальної мережі", "Зберегти"],
-    ["Оновлення", "Перевірити оновлення"],
+    /*["Оновлення", "Перевірити оновлення"],*/
     ["Інформація"]],
     popup: ["Згоден? Lorem ipsum lorem ipsum lorem lorem, Згоден же?", "Згоден", "Закрити"],
     updatePopup: ["Знайдені оновлення!", "Оновити", "Закрити"],
@@ -113,17 +113,24 @@ function defaultLang(str) {//interpret browser language string and set language 
     }
 }
 window.addEventListener('load', (event) => {//startup laguage setup
-    defaultLang(navigator.language);
-    console.log(navigator.language);
+    if(localStorage.getItem('lang')){
+        defaultLang(localStorage.getItem('lang'));
+    }
+    else{
+        localStorage.setItem('lang', navigator.language);
+        defaultLang(navigator.language);
+    }
     TranslateAll(langSelected);
     langButtons.childNodes[langlist.indexOf(langSelected)].classList.add("Active");
 });
 
 //Buttons functionality
 let langlist = ["ENG", "UA", "RU"]
+let navLang = ["en","uk","ru"]
 let langButtons = document.getElementById("langPanel");
 langButtons.childNodes.forEach((element, i) => {
     element.addEventListener("click", (event) => {
+        localStorage.setItem('lang',navLang[i]);
         TranslateAll(langlist[i]);
         makeLangButtonActive(i);
     })

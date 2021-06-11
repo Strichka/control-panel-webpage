@@ -6,6 +6,7 @@ let Dropmenu = document.getElementById("Menu1");
 var ModeSelectors = document.getElementsByName('ModeSelector')
 var ModeIndex;
 var sliderSettings;
+let sliderTimeout = new Date();
 
 window.addEventListener('load', (event) => { //receiving data from server and syncing sliders with it by emulating mouseup event
 
@@ -62,9 +63,11 @@ sliders.forEach((element, i) => {
         arrS[i].textContent = ` .slidecontainer:nth-child(${i + 1}) .slider::-webkit-slider-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)} `
         if (i > 0 && i < 3) {
             output[i].innerHTML = (Math.pow(2, (element.value / 16384 - 2)).toFixed(2));
+            ChangeSlideData(element, i);
         }
         else {
             output[i].innerHTML = element.value;
+            ChangeSlideData(element, i);
         }
         if (i == 3) {
             ChangeSlideData(element, i);
@@ -88,6 +91,10 @@ sliders.forEach((element, i) => {
 });
 
 let ChangeSlideData = ((element, i) => {//patch slider settings 
+    
+    if(new Date().getTime() - sliderTimeout.getTime() > 100){
+        sliderTimeout = new Date()
+        console.log("sent")
     var changeData = new XMLHttpRequest();
     changeData.open("PATCH", '/v0/led/config', true);
     let val = sliderSettings;
@@ -115,6 +122,10 @@ let ChangeSlideData = ((element, i) => {//patch slider settings
         //led
     }
     changeData.send(JSON.stringify(val));
+}
+else{
+    console.log("too fast")
+}
 
 });
 function SendLed() {//emulating mouse up on led input to send data to shared event listener
@@ -131,6 +142,7 @@ function continuosIncerment() {//led input acceleration function
     if (sliders[3].value < parseInt(sliders[3].getAttribute('max'))) {
         sliders[3].value = parseInt(sliders[3].value) + 1;
         wasChanged = true;
+        SendLed()
     }
     if (increment < 10) {
         increment = increment + 2;
@@ -142,6 +154,7 @@ function continuosDecerment() {//led input acceleration function
     if (sliders[3].value > parseInt(sliders[3].getAttribute('min'))) {
         sliders[3].value = parseInt(sliders[3].value) - 1;
         wasChanged = true;
+        SendLed()
     }
     if (decrement < 10) {
         decrement = decrement + 2;
