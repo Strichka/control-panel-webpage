@@ -1,38 +1,4 @@
-const russDictionary = {
-    sliders: ["Яркость: ", "Скорость: ", "Ширина: ", "Количество светодиодов: ","Применить"],
-    menu: [["Режимы", "Режим 1", "Режим 2", "Режим 3"],
-    ["Сеть", "Имя сети", "Пароль сети", "Имя локальной сети", "Пароль локальной сети", "Сохранить"],
-    /*["Обновления", "Проверить Обновления"],*/
-    ["Информация"]],
-    popup: ["Согласен? Lorem ipsum lorem ipsum lorem lorem, Согласен же?", "Принять", "Закрыть"],
-    updatePopup: ["Есть обновления!", "Обновить", "Закрыть"],
-    noUpdatePopup: ["Последняя версия!", "Отлично"],
-    loadingScreen: ["Грузим"]
-}
 
-const engDictionary = {
-    sliders: ["Brightness: ", "Speed: ", "Width: ", "LED count: ","Accept"],
-    menu: [["Modes", "Mode 1", "Mode 2", "Mode 3"],
-    ["Network", "Network Name", "Network Password", "Local network name", "Local Network Password", "Save"],
-    /*["Updates", "Check Updates"],*/
-    ["Info"]],
-    popup: ["Accept it pls, Lorem ipsum lorem ipsum lorem lorem ", "Accept", "Close"],
-    updatePopup: ["Found Updates!", "Update", "Close"],
-    noUpdatePopup: ["Latest version!", "Good"],
-    loadingScreen: ["Loading"]
-}
-
-const uaDictionary = {
-    sliders: ["Яскравість: ", "Швидкість: ", "Ширина: ", "Кількіть Світлодіодів: ","Зберегти"],
-    menu: [["Режими", "Режим 1", "Режим 2", "Режим 3"],
-    ["Мережа", "Ім'я мережі", "Пароль мережі", "Ім'я локальної мережі", "Пароль локальної мережі", "Зберегти"],
-    /*["Оновлення", "Перевірити оновлення"],*/
-    ["Інформація"]],
-    popup: ["Згоден? Lorem ipsum lorem ipsum lorem lorem, Згоден же?", "Згоден", "Закрити"],
-    updatePopup: ["Знайдені оновлення!", "Оновити", "Закрити"],
-    noUpdatePopup: ["Остання версія!", "Файно"],
-    loadingScreen: ["Завантаження"]
-}
 
 let currDictionary = engDictionary;
 let langSelected = "ENG";

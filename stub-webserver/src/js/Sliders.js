@@ -18,7 +18,7 @@ window.addEventListener('load', (event) => { //receiving data from server and sy
     checkscrn();
 
     var GETsliders = new XMLHttpRequest();
-    GETsliders.open("GET", '/v0/led/config', true);
+    GETsliders.open("GET", '/v0/led', true);
     GETsliders.send();
     GETsliders.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -101,7 +101,7 @@ let ChangeSlideData = ((element, i) => {//patch slider settings
         sliderTimeout = new Date()
         console.log("sent")
     var changeData = new XMLHttpRequest();
-    changeData.open("POST", '/v0/led/config', true);
+    changeData.open("POST", '/v0/led', true);
     changeData.setRequestHeader('Content-type', 'application/json');
     let val = sliderSettings;
     let changedName = "";
@@ -228,7 +228,7 @@ ModeSelectors.forEach((element, i) => {//mode selector active class juggling and
 
 function askReboot(){
     var rebootRequest = new XMLHttpRequest();
-    rebootRequest.open("POST", '/v0/restart', true);
+    rebootRequest.open("GET", '/v0/restart', true);
     rebootRequest.send()
     PingServer();
 }
