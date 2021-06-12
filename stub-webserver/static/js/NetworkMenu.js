@@ -21,7 +21,8 @@ window.addEventListener('load', (event) => {//get current network settings from 
 NetSubmitButton.addEventListener("click", (event) => {//checking text input and sending new config
     var isValidData = true;
     var SETnetConfig = new XMLHttpRequest();
-    SETnetConfig.open("PUT", '/v0/network/config', true);
+    SETnetConfig.open("POST", '/v0/network/config', true);
+    SETnetConfig.setRequestHeader('Content-type', 'application/json');
     var NetConfObj = {};
     NetConf.forEach((element, i) => {
         if (isASCII(NetConf[i].value)) {

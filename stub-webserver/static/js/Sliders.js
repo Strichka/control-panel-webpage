@@ -96,7 +96,8 @@ let ChangeSlideData = ((element, i) => {//patch slider settings
         sliderTimeout = new Date()
         console.log("sent")
     var changeData = new XMLHttpRequest();
-    changeData.open("PATCH", '/v0/led/config', true);
+    changeData.open("POST", '/v0/led/config', true);
+    changeData.setRequestHeader('Content-type', 'application/json');
     let val = sliderSettings;
     let changedName = "";
 

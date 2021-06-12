@@ -15,14 +15,16 @@ window.addEventListener('load', (event) => {//check policy on page load
                 document.getElementById('Agree').addEventListener('click', () => {
                     popup.parentNode.removeChild(popup);
                     var ACCEPTpolicy = new XMLHttpRequest();
-                    ACCEPTpolicy.open("PUT", '/v0/policy', true);
+                    ACCEPTpolicy.open("POST", '/v0/policy', true);
+                    ACCEPTpolicy.setRequestHeader('Content-type', 'application/json');
                     console.log(JSON.stringify({ accepted: true }));
                     ACCEPTpolicy.send(JSON.stringify({ accepted: true }));
                 });
                 document.getElementById('Disagree').addEventListener('click', () => {
                     popup.parentNode.removeChild(popup);
                     var DECLINEpolicy = new XMLHttpRequest();
-                    DECLINEpolicy.open("PUT", '/v0/policy', true);
+                    DECLINEpolicy.open("POST", '/v0/policy', true);
+                    DECLINEpolicy.setRequestHeader('Content-type', 'application/json');
                     DECLINEpolicy.send(JSON.stringify({ accepted: false }));
                 });
             }
