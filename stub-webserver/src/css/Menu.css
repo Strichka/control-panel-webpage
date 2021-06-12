@@ -169,10 +169,12 @@ input[type="checkbox"]:focus {
   0% {
     -webkit-transform: scaleY(0.1);
     transform: scaleY(0.1);
+    opacity: 0;
   }
   100% {
     -webkit-transform: scaleY(1);
     transform: scaleY(1);
+    
   }
 }
 
@@ -180,10 +182,12 @@ input[type="checkbox"]:focus {
   0% {
     -webkit-transform: scaleY(0.1);
     transform: scaleY(0.1);
+    opacity: 0;
   }
   100% {
     -webkit-transform: scaleY(1);
     transform: scaleY(1);
+    
   }
 }
 
@@ -191,10 +195,12 @@ input[type="checkbox"]:focus {
   0% {
     -webkit-transform: scaleY(1);
     transform: scaleY(1);
+    
   }
   100% {
     -webkit-transform: scaleY(0.1);
     transform: scaleY(0.1);
+    opacity: 0;
   }
 }
 
@@ -202,10 +208,12 @@ input[type="checkbox"]:focus {
   0% {
     -webkit-transform: scaleY(1);
     transform: scaleY(1);
+    
   }
   100% {
     -webkit-transform: scaleY(0.1);
     transform: scaleY(0.1);
+    opacity: 0;
   }
 }
 
