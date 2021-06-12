@@ -8,10 +8,10 @@ window.addEventListener('load', (event) => {//get current network settings from 
     GETnetConf.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             NetResponse = JSON.parse(this.responseText);
-            NetConf[0].value = NetResponse["ap_password"];
-            NetConf[1].value = NetResponse["ap_ssid"];
-            NetConf[2].value = NetResponse["sta_password"];
-            NetConf[3].value = NetResponse["sta_ssid"];
+            NetConf[0].value = NetResponse["ap_ssid"];
+            NetConf[1].value = NetResponse["ap_password"];
+            NetConf[2].value = NetResponse["sta_ssid"];
+            NetConf[3].value = NetResponse["sta_password"];
 
         }
     }

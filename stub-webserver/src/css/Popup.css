@@ -134,7 +134,7 @@
 }
 
 .Popup .textbox .popupButtonPanel :last-child {
-  background-color: crimson;
+  /* background-color: crimson; */
 }
 
 .Popup .textbox .popupButtonPanel :first-child {
@@ -162,6 +162,6 @@
 }
 
 .popupButtonPanel :last-child {
-  background-color: crimson;
+  /* background-color: crimson; */
 }
 /*# sourceMappingURL=popup.css.map */

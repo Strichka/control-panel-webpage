@@ -149,9 +149,9 @@ input[type="checkbox"]:focus {
   display: block;
   -webkit-transform: scaleY(1);
   transform: scaleY(1);
-  animation: showAnimation 0.3s ease-in-out;
-  -moz-animation: showAnimation 0.3s ease-in-out;
-  -webkit-animation: showAnimation 0.3s ease-in-out;
+  animation: showAnimation 0.4s ease-in-out;
+  -moz-animation: showAnimation 0.4s ease-in-out;
+  -webkit-animation: showAnimation 0.4s ease-in-out;
   -webkit-transition: max-height 1s ease-in-out;
   transition: max-height 1s ease-in-out;
 }
@@ -170,26 +170,6 @@ input[type="checkbox"]:focus {
     -webkit-transform: scaleY(0.1);
     transform: scaleY(0.1);
   }
-  40% {
-    -webkit-transform: scaleY(1.04);
-    transform: scaleY(1.04);
-  }
-  60% {
-    -webkit-transform: scaleY(0.98);
-    transform: scaleY(0.98);
-  }
-  80% {
-    -webkit-transform: scaleY(1.04);
-    transform: scaleY(1.04);
-  }
-  100% {
-    -webkit-transform: scaleY(0.98);
-    transform: scaleY(0.98);
-  }
-  80% {
-    -webkit-transform: scaleY(1.02);
-    transform: scaleY(1.02);
-  }
   100% {
     -webkit-transform: scaleY(1);
     transform: scaleY(1);
@@ -200,26 +180,6 @@ input[type="checkbox"]:focus {
   0% {
     -webkit-transform: scaleY(0.1);
     transform: scaleY(0.1);
-  }
-  40% {
-    -webkit-transform: scaleY(1.04);
-    transform: scaleY(1.04);
-  }
-  60% {
-    -webkit-transform: scaleY(0.98);
-    transform: scaleY(0.98);
-  }
-  80% {
-    -webkit-transform: scaleY(1.04);
-    transform: scaleY(1.04);
-  }
-  100% {
-    -webkit-transform: scaleY(0.98);
-    transform: scaleY(0.98);
-  }
-  80% {
-    -webkit-transform: scaleY(1.02);
-    transform: scaleY(1.02);
   }
   100% {
     -webkit-transform: scaleY(1);
@@ -232,17 +192,9 @@ input[type="checkbox"]:focus {
     -webkit-transform: scaleY(1);
     transform: scaleY(1);
   }
-  60% {
-    -webkit-transform: scaleY(0.98);
-    transform: scaleY(0.98);
-  }
-  80% {
-    -webkit-transform: scaleY(1.02);
-    transform: scaleY(1.02);
-  }
   100% {
-    -webkit-transform: scaleY(0);
-    transform: scaleY(0);
+    -webkit-transform: scaleY(0.1);
+    transform: scaleY(0.1);
   }
 }
 
@@ -251,17 +203,9 @@ input[type="checkbox"]:focus {
     -webkit-transform: scaleY(1);
     transform: scaleY(1);
   }
-  60% {
-    -webkit-transform: scaleY(0.98);
-    transform: scaleY(0.98);
-  }
-  80% {
-    -webkit-transform: scaleY(1.02);
-    transform: scaleY(1.02);
-  }
   100% {
-    -webkit-transform: scaleY(0);
-    transform: scaleY(0);
+    -webkit-transform: scaleY(0.1);
+    transform: scaleY(0.1);
   }
 }
 

@@ -5,7 +5,7 @@ window.addEventListener('load', (event) => {//check policy on page load
     GETpolicy.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {//on response
             var policyResponse = JSON.parse(this.responseText);
-            if (policyResponse.accepted == false || policyResponse.accepted == null) {//add policy popup if needed
+            if ( policyResponse.accepted == null) {//add policy popup if needed
                 body = document.getElementById("Body")
                 var popup = document.createElement("div");
                 popup.innerHTML = "<div class='textbox'><span class='policyspan popupTranslatePool'>lorem\n lorem</span><div class='popupButtonPanel'><button class='button popupTranslatePool' id='Agree'>ok</button><button class='button popupTranslatePool' id='Disagree'>no</button></div></div>";

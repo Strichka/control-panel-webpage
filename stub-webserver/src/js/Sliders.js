@@ -68,7 +68,7 @@ arrS.forEach(element => {
 sliders.forEach((element, i) => {
     element.addEventListener("input", () => {//slider color change on input
         enforce_maxlength(event);
-        arrS[i].textContent = ` .slidecontainer:nth-child(${i + 1}) .slider::-webkit-slider-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)} `
+        arrS[i].textContent = ` .slidecontainer:nth-child(${i + 1}) .slider::-webkit-slider-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)} .slidecontainer:nth-child(${i + 1}) .slider::-moz-range-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)}`
         if (i > 0 && i < 3) {
             output[i].innerHTML = (Math.pow(2, (element.value / 16384 - 2)).toFixed(2));
             ChangeSlideData(element, i);
