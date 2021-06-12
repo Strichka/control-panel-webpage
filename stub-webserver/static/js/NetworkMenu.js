@@ -3,7 +3,7 @@ let NetSubmitButton = document.getElementById("NetSubmit");
 
 window.addEventListener('load', (event) => {//get current network settings from server and use them
     var GETnetConf = new XMLHttpRequest();
-    GETnetConf.open("GET", '/v0/network/config', true);
+    GETnetConf.open("GET", '/v0/network', true);
     GETnetConf.send();
     GETnetConf.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -21,7 +21,7 @@ window.addEventListener('load', (event) => {//get current network settings from 
 NetSubmitButton.addEventListener("click", (event) => {//checking text input and sending new config
     var isValidData = true;
     var SETnetConfig = new XMLHttpRequest();
-    SETnetConfig.open("POST", '/v0/network/config', true);
+    SETnetConfig.open("POST", '/v0/network', true);
     SETnetConfig.setRequestHeader('Content-type', 'application/json');
     var NetConfObj = {};
     NetConf.forEach((element, i) => {
