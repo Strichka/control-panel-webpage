@@ -34,7 +34,12 @@ NetSubmitButton.addEventListener("click", (event) => {//checking text input and 
     });
     if (isValidData) {
         SETnetConfig.send(JSON.stringify(NetConfObj));
-        PingServer();
+        SETnetConfig.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                askReboot()
+            }
+        }
+        
     }
     else {
         alert("Please, use ASCII symbols");

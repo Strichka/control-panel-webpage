@@ -3,7 +3,12 @@ let PLUSbtn = document.getElementById("PLUSbtn");
 let MINUSbtn = document.getElementById("MINUSbtn");
 var output = document.querySelectorAll("span.SlideOut");
 let Dropmenu = document.getElementById("Menu1");
+let saveChangesBtn = document.getElementById("saveChangesBtn");
+saveChangesBtn.classList.add("sleepyButton")
+
 var ModeSelectors = document.getElementsByName('ModeSelector')
+
+let ModeSelectorsPlace = document.getElementById("ModeSelectorsPlace")
 var ModeIndex;
 var sliderSettings;
 let sliderTimeout = new Date();
@@ -123,6 +128,9 @@ let ChangeSlideData = ((element, i) => {//patch slider settings
         //led
     }
     changeData.send(JSON.stringify(val));
+    if(changedName === "led_count"){
+        activateSaveChangesButton()
+    }
 }
 else{
     console.log("too fast")
@@ -218,6 +226,19 @@ ModeSelectors.forEach((element, i) => {//mode selector active class juggling and
     });
 })
 
+function askReboot(){
+    var rebootRequest = new XMLHttpRequest();
+    rebootRequest.open("POST", '/v0/restart', true);
+    rebootRequest.send()
+    PingServer();
+}
 
+function activateSaveChangesButton(){
+    saveChangesBtn.addEventListener("click",askReboot)
+    saveChangesBtn.classList.remove("sleepyButton")
+}
 
-
+function deactivateSaveChangesButton(){
+    saveChangesBtn.removeEventListener("click",askReboot)
+    saveChangesBtn.classList.add("sleepyButton")
+}

@@ -54,6 +54,11 @@
       -ms-user-select: none;
           user-select: none;
 }
+.SubmitChangesBtn{
+  width:30%;
+  margin-bottom: 32px;
+}
+
 
 .NetworkSettingSubmit:hover {
   -webkit-box-shadow: 1px 1px;
@@ -68,4 +73,22 @@
 .NetworkSettingSubmit span {
   color: white;
 }
+
+.sleepyButton{
+  background-color:rgb(235,235,235);
+
+}
+.sleepyButton:hover{
+  box-shadow: none;
+  background-color:rgb(235,235,235);
+}
+
+.sleepyButton span {
+  color: black;
+}
+
+.sleepyButton:hover span {
+  color: black;
+}
+
 /*# sourceMappingURL=NetworkSettings.css.map */
