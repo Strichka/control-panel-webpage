@@ -1,7 +1,56 @@
-
-
+let russDictionary;
+let engDictionary;
+let uaDictionary;
 let currDictionary = engDictionary;
 let langSelected = "ENG";
+
+function  getLanguagePackets(){
+    var GETlanguages = new XMLHttpRequest();
+    GETlanguages.open("GET", "/static/locales.json", true);
+    GETlanguages.send();
+    console.log("sent")
+    GETlanguages.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var langs = JSON.parse(this.responseText);
+            russDictionary=langs.russDictionary
+            engDictionary=langs.engDictionary
+            uaDictionary=langs.uaDictionary
+            generateModes(engDictionary.menu[0])
+            
+            if(localStorage.getItem('lang')){
+                defaultLang(localStorage.getItem('lang'));
+            }
+            else{
+                localStorage.setItem('lang', navigator.language);
+                defaultLang(navigator.language);
+            }
+            TranslateAll(langSelected);
+            langButtons.childNodes[langlist.indexOf(langSelected)].classList.add("Active");
+            
+            
+        }
+
+    }
+}
+
+let ModeSelectorsPlace = document.getElementById("ModeSelectorsPlace")
+
+function generateModes(array) {
+    console.log(array);
+    array.forEach((e,i)=>{
+        if(i>0){
+        let modeNode = document.createElement("div");
+        modeNode.className = "ModeSelector";
+        modeNode.innerHTML = "<div name='ModeSelector' class='NetworkSettingSubmit menuTranslatePool' href='#'>Mode</div>"
+        ModeSelectorsPlace.appendChild(modeNode)
+        }
+    })
+    let hrNode = document.createElement("hr");
+    hrNode.className = "borderLine";
+    ModeSelectorsPlace.appendChild(hrNode)
+    
+}
+
 
 function SetLanguage(lang) {//dictionary selector
     langSelected = lang;
@@ -17,6 +66,7 @@ function SetLanguage(lang) {//dictionary selector
     else {
         currDictionary = engDictionary;
     }
+    
 }
 
 function GetDict(component) {//wannabe getter for easier dictionary component access
@@ -42,8 +92,16 @@ function TranslateList(list, componentDictionary) {//translate single component
 }
 
 function TranslateAll(lang = langSelected) {//total translation of all components
+
     langSelected = lang;
     SetLanguage(lang);
+    
+    let slidersText = document.getElementsByClassName("sliderTranslatePool");
+    let menuText = document.getElementsByClassName("menuTranslatePool");
+    let popupText = document.getElementsByClassName("popupTranslatePool");
+    let popupUpdateText = document.getElementsByClassName("updatePopupTranslatePool");
+    let popupNoUpdateText = document.getElementsByClassName("noUpdatePopupTranslatePool");
+    let popupLoadingText = document.getElementsByClassName("loadingPopupTranslatePool");
     TranslateList(slidersText, GetDict("sliders"));
     TranslateList(menuText, GetDict("menu"));
     if (popupText[0]) {
@@ -60,12 +118,6 @@ function TranslateAll(lang = langSelected) {//total translation of all component
     }
 }
 
-let slidersText = document.getElementsByClassName("sliderTranslatePool");
-let menuText = document.getElementsByClassName("menuTranslatePool");
-let popupText = document.getElementsByClassName("popupTranslatePool");
-let popupUpdateText = document.getElementsByClassName("updatePopupTranslatePool");
-let popupNoUpdateText = document.getElementsByClassName("noUpdatePopupTranslatePool");
-let popupLoadingText = document.getElementsByClassName("loadingPopupTranslatePool");
 
 function defaultLang(str) {//interpret browser language string and set language setting
     if (str.includes("ru")) {
@@ -78,16 +130,8 @@ function defaultLang(str) {//interpret browser language string and set language 
         SetLanguage("ENG");
     }
 }
-window.addEventListener('load', (event) => {//startup laguage setup
-    if(localStorage.getItem('lang')){
-        defaultLang(localStorage.getItem('lang'));
-    }
-    else{
-        localStorage.setItem('lang', navigator.language);
-        defaultLang(navigator.language);
-    }
-    TranslateAll(langSelected);
-    langButtons.childNodes[langlist.indexOf(langSelected)].classList.add("Active");
+window.addEventListener('load',  async (event) => {//startup laguage setup
+     getLanguagePackets()
 });
 
 //Buttons functionality

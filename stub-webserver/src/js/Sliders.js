@@ -8,7 +8,7 @@ saveChangesBtn.classList.add("sleepyButton")
 
 var ModeSelectors = document.getElementsByName('ModeSelector')
 
-let ModeSelectorsPlace = document.getElementById("ModeSelectorsPlace")
+
 var ModeIndex;
 var sliderSettings;
 let sliderTimeout = new Date();
@@ -41,7 +41,10 @@ window.addEventListener('load', (event) => { //receiving data from server and sy
                 element.dispatchEvent(event);
             });
             ModeIndex = sliderSettings.mode_index;
+            console.log(ModeIndex)
+            console.log(ModeSelectors)
             ModeSelectors[ModeIndex].classList.add("Active");
+            makeModeSelectors()
             sliders.forEach((element, i) => {
                 if (i > 0 && i < 3) {
                     output[i].innerHTML = (Math.pow(2, (element.value / 16384 - 2))).toFixed(2);
@@ -210,21 +213,24 @@ function touchctrl() {
 
 }
 
-ModeSelectors.forEach((element, i) => {//mode selector active class juggling and click handling 
-    element.addEventListener("click", () => {
-        ModeIndex = i;
-        if (!(ModeSelectors[i].classList.contains("Active"))) {
-            ModeSelectors[i].classList.add("Active");
-            ModeSelectors[i].value = i;
-            ChangeSlideData(ModeSelectors[i], 4)
-            ModeSelectors.forEach((element, i) => {
-                if (ModeIndex !== i) {
-                    element.classList.remove("Active");
-                }
-            });
-        }
-    });
-})
+function makeModeSelectors(){
+    ModeSelectors.forEach((element, i) => {//mode selector active class juggling and click handling 
+        element.addEventListener("click", () => {
+            ModeIndex = i;
+            if (!(ModeSelectors[i].classList.contains("Active"))) {
+                ModeSelectors[i].classList.add("Active");
+                ModeSelectors[i].value = i;
+                ChangeSlideData(ModeSelectors[i], 4)
+                ModeSelectors.forEach((element, i) => {
+                    if (ModeIndex !== i) {
+                        element.classList.remove("Active");
+                    }
+                });
+            }
+        });
+    })
+}
+
 
 function askReboot(){
     var rebootRequest = new XMLHttpRequest();
