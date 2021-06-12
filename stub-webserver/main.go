@@ -212,6 +212,11 @@ func PutNetworkConfig(ctx *gin.Context) {
 	if err != nil {
 		ctx.String(http.StatusBadRequest, err.Error())
 	}
+}
+
+func GetRestart(ctx *gin.Context) {
+	resetMutex.Lock()
+	defer resetMutex.Unlock()
 
 	time.Sleep(5 * time.Second)
 }
@@ -272,24 +277,21 @@ func main() {
 	root.GET("/static/*Filename", GetFile)
 
 	v0 := root.Group("/v0")
+
 	v0.GET("/ping", GetPing)
+
+	v0.GET("/restart", GetRestart)
+
 	v0.GET("/policy", GetPolicy)
-	v0.PUT("/policy", PutPolicy)
+	v0.POST("/policy", PutPolicy)
+
 	v0.GET("/info", GetInfo)
 
-	led := v0.Group("/led")
-	led.GET("/config", GetLedConfig)
-	led.PUT("/config", PutLedConfig) // Deprecated
-	led.PATCH("/config", PatchLedConfig)
+	v0.GET("/led", GetLedConfig)
+	v0.POST("/led", PutLedConfig)
 
-	network := v0.Group("/network")
-	network.GET("/config", GetNetworkConfig)
-	network.PUT("/config", PutNetworkConfig)
-	network.PATCH("/config", PatchNetworkConfig) // Deprecated
-
-	update := v0.Group("/update")
-	update.GET("/list", GetUpdateCheck)
-	update.GET("/perform", GetUpdatePerform)
+	v0.GET("/network", GetNetworkConfig)
+	v0.POST("/network", PutNetworkConfig)
 
 	router.Run(":8080")
 }
