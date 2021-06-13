@@ -87,7 +87,7 @@ sliders.forEach((element, i) => {
 sliders.forEach((element, i) => {
     element.addEventListener("mouseup", () => {//slider color change  and data flow on release
         enforce_maxlength(event);
-        arrS[i].textContent = ` .slidecontainer:nth-child(${i + 1}) .slider::-webkit-slider-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)} `;
+        arrS[i].textContent = ` .slidecontainer:nth-child(${i + 1}) .slider::-webkit-slider-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)}  .slidecontainer:nth-child(${i + 1}) .slider::-moz-range-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)}`;
         if (i > 0 && i < 3) {
             output[i].innerHTML = (Math.pow(2, (element.value / 16384 - 2))).toFixed(2);
         }
