@@ -13,6 +13,8 @@ var ModeIndex;
 var sliderSettings;
 let sliderTimeout = new Date();
 
+let SetArray = [];
+
 window.addEventListener('load', (event) => { //receiving data from server and syncing sliders with it by emulating mouseup event
 
     checkscrn();
@@ -24,7 +26,7 @@ window.addEventListener('load', (event) => { //receiving data from server and sy
         if (this.readyState == 4 && this.status == 200) {
 
             sliderSettings = JSON.parse(this.responseText);
-            let SetArray = [];
+            
             SetArray[0] = sliderSettings.brightness;
             SetArray[1] = sliderSettings.speed;
             SetArray[2] = sliderSettings.width;
@@ -84,22 +86,11 @@ sliders.forEach((element, i) => {
 });
 
 
-sliders.forEach((element, i) => {
-    element.addEventListener("mouseup", () => {//slider color change  and data flow on release
-        enforce_maxlength(event);
-        arrS[i].textContent = ` .slidecontainer:nth-child(${i + 1}) .slider::-webkit-slider-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)}  .slidecontainer:nth-child(${i + 1}) .slider::-moz-range-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)}`;
-        if (i > 0 && i < 3) {
-            output[i].innerHTML = (Math.pow(2, (element.value / 16384 - 2))).toFixed(2);
-        }
-        else {
-            output[i].innerHTML = element.value;
-        }
-        ChangeSlideData(element, i,true);
-    })
-});
 
 let ChangeSlideData = ((element, i,forced=false) => {//patch slider settings 
-    
+    if(forced){
+        console.log("forced")
+    }
     if(forced===true || new Date().getTime() - sliderTimeout.getTime() > 100){
         sliderTimeout = new Date()
         console.log("sent")
@@ -131,7 +122,7 @@ let ChangeSlideData = ((element, i,forced=false) => {//patch slider settings
         //led
     }
     changeData.send(JSON.stringify(val));
-    if(changedName === "led_count"){
+    if(changedName === "led_count" && sliderSettings.led_count !==SetArray[3]){
         activateSaveChangesButton()
     }
 }
@@ -186,6 +177,20 @@ function timeoutClear() {//stopping recursion of acceleration functions
 
 function checkscrn() {//touchscreen check and according input changes
     var isTouch = false;
+    sliders.forEach((element, i) => {
+        element.addEventListener("mouseup", //slider color change  and data flow on release
+        ()=>{
+            enforce_maxlength(event);
+            arrS[i].textContent = ` .slidecontainer:nth-child(${i + 1}) .slider::-webkit-slider-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)}  .slidecontainer:nth-child(${i + 1}) .slider::-moz-range-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)}`;
+            if (i > 0 && i < 3) {
+                output[i].innerHTML = (Math.pow(2, (element.value / 16384 - 2))).toFixed(2);
+            }
+            else {
+                output[i].innerHTML = element.value;
+            }
+            ChangeSlideData(element, i,true);
+        })
+    });
     PLUSbtn.addEventListener('mousedown', continuosIncerment);
     PLUSbtn.addEventListener('mouseup', timeoutClear);
     PLUSbtn.addEventListener('mouseleave', timeoutClear);
@@ -195,6 +200,35 @@ function checkscrn() {//touchscreen check and according input changes
 
     window.addEventListener('touchstart', function touchDetector() {
         isTouch = true;
+        sliders.forEach((element, i) => {
+            element.removeEventListener("mouseup", //slider color change  and data flow on release
+            ()=>{
+                enforce_maxlength(event);
+                arrS[i].textContent = ` .slidecontainer:nth-child(${i + 1}) .slider::-webkit-slider-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)}  .slidecontainer:nth-child(${i + 1}) .slider::-moz-range-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)}`;
+                if (i > 0 && i < 3) {
+                    output[i].innerHTML = (Math.pow(2, (element.value / 16384 - 2))).toFixed(2);
+                }
+                else {
+                    output[i].innerHTML = element.value;
+                }
+                ChangeSlideData(element, i,true);
+            })
+
+            element.addEventListener("touchend", //slider color change  and data flow on release
+            ()=>{
+                enforce_maxlength(event);
+                arrS[i].textContent = ` .slidecontainer:nth-child(${i + 1}) .slider::-webkit-slider-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)}  .slidecontainer:nth-child(${i + 1}) .slider::-moz-range-thumb{background-color: hsl(${100 - (element.value / (element.max / 100))}, 100%, 50%)}`;
+                if (i > 0 && i < 3) {
+                    output[i].innerHTML = (Math.pow(2, (element.value / 16384 - 2))).toFixed(2);
+                }
+                else {
+                    output[i].innerHTML = element.value;
+                }
+                ChangeSlideData(element, i,true);
+            })
+        });
+
+       
         PLUSbtn.removeEventListener('mousedown', continuosIncerment);
         PLUSbtn.removeEventListener('mouseup', timeoutClear);
         PLUSbtn.removeEventListener('mouseleave', timeoutClear);
@@ -203,8 +237,9 @@ function checkscrn() {//touchscreen check and according input changes
         MINUSbtn.removeEventListener('mouseleave', timeoutClear);
         touchctrl();
         window.removeEventListener('touchstart', touchDetector);
-    });
-}
+     });
+    }
+
 function touchctrl() {
     PLUSbtn.addEventListener("touchstart", continuosIncerment);
     PLUSbtn.addEventListener('touchend', timeoutClear);
