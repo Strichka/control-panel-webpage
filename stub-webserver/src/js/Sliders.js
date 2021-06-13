@@ -94,13 +94,13 @@ sliders.forEach((element, i) => {
         else {
             output[i].innerHTML = element.value;
         }
-        ChangeSlideData(element, i);
+        ChangeSlideData(element, i,true);
     })
 });
 
-let ChangeSlideData = ((element, i) => {//patch slider settings 
+let ChangeSlideData = ((element, i,forced=false) => {//patch slider settings 
     
-    if(new Date().getTime() - sliderTimeout.getTime() > 100){
+    if(forced===true || new Date().getTime() - sliderTimeout.getTime() > 100){
         sliderTimeout = new Date()
         console.log("sent")
     var changeData = new XMLHttpRequest();
