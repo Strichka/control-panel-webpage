@@ -98,7 +98,8 @@ let ChangeSlideData = ((element, i,forced=false) => {//patch slider settings
         })
         sliderRequestList = [];
     }
-    if(forced===true || (!sliderPostBlock|| new Date().getTime - sliderTimeout > 3000)){
+    if(forced===true || ((!sliderPostBlock)|| new Date().getTime - sliderTimeout > 3000)){
+        sliderPostBlock = true;
         sliderTimeout = new Date()
         console.log("sent")
     var changeData = new XMLHttpRequest();
@@ -129,6 +130,7 @@ let ChangeSlideData = ((element, i,forced=false) => {//patch slider settings
         //led
     }
     changeData.send(JSON.stringify(val));
+    
     sliderRequestList.push(changeData);
     changeData.onreadystatechange = function () {
         if (this.readyState == 4) {
@@ -139,7 +141,7 @@ let ChangeSlideData = ((element, i,forced=false) => {//patch slider settings
     }
 }
 else{
-    console.log("too fast")
+    console.log("too fast or blocked")
 }
 
 });
