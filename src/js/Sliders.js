@@ -5,6 +5,7 @@ var output = document.querySelectorAll("span.SlideOut");
 let Dropmenu = document.getElementById("Menu1");
 let saveChangesBtn = document.getElementById("saveChangesBtn");
 saveChangesBtn.classList.add("sleepyButton")
+let sliderRequestList = [];
 
 var ModeSelectors = document.getElementsByName('ModeSelector')
 
@@ -91,6 +92,11 @@ sliders.forEach((element, i) => {
 let ChangeSlideData = ((element, i,forced=false) => {//patch slider settings 
     if(forced){
         console.log("forced")
+        sliderRequestList.forEach((e)=>{
+            e.abort();
+            console.log("aborted")
+        })
+        sliderRequestList = [];
     }
     if(forced===true || (!sliderPostBlock|| new Date().getTime - sliderTimeout > 3000)){
         sliderTimeout = new Date()
@@ -123,6 +129,7 @@ let ChangeSlideData = ((element, i,forced=false) => {//patch slider settings
         //led
     }
     changeData.send(JSON.stringify(val));
+    sliderRequestList.push(changeData);
     changeData.onreadystatechange = function () {
         if (this.readyState == 4) {
             sliderPostBlock = false;
