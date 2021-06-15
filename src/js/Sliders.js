@@ -92,7 +92,7 @@ let ChangeSlideData = ((element, i,forced=false) => {//patch slider settings
     if(forced){
         console.log("forced")
     }
-    if(forced===true || !sliderPostBlock){
+    if(forced===true || (!sliderPostBlock|| new Date().getTime - sliderTimeout > 3000)){
         sliderTimeout = new Date()
         console.log("sent")
     var changeData = new XMLHttpRequest();
