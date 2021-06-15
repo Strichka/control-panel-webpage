@@ -12,6 +12,7 @@ var ModeSelectors = document.getElementsByName('ModeSelector')
 var ModeIndex;
 var sliderSettings;
 let sliderTimeout = new Date();
+let sliderPostBlock=false;
 
 let SetArray = [];
 
@@ -91,7 +92,7 @@ let ChangeSlideData = ((element, i,forced=false) => {//patch slider settings
     if(forced){
         console.log("forced")
     }
-    if(forced===true || new Date().getTime() - sliderTimeout.getTime() > 100){
+    if(forced===true || !sliderPostBlock){
         sliderTimeout = new Date()
         console.log("sent")
     var changeData = new XMLHttpRequest();
@@ -122,6 +123,10 @@ let ChangeSlideData = ((element, i,forced=false) => {//patch slider settings
         //led
     }
     changeData.send(JSON.stringify(val));
+    changeData.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            sliderPostBlock = false;
+            }};
     if(changedName === "led_count" && sliderSettings.led_count !==SetArray[3]){
         activateSaveChangesButton()
     }
