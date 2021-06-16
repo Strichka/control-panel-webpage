@@ -7,7 +7,7 @@ let saveChangesBtn = document.getElementById("saveChangesBtn");
 saveChangesBtn.classList.add("sleepyButton")
 let sliderRequestList = [];
 
-var ModeSelectors = document.getElementsByName('ModeSelector')
+let ModeSelectors = document.getElementsByName('ModeSelector')
 
 
 var ModeIndex;
@@ -17,8 +17,9 @@ let sliderPostBlock=false;
 
 let SetArray = [];
 
-window.addEventListener('load', (event) => { //receiving data from server and syncing sliders with it by emulating mouseup event
-
+function sliderInit() { //receiving data from server and syncing sliders with it by emulating mouseup event
+    
+    let ModeSelectors = document.getElementsByName('ModeSelector')
     checkscrn();
 
     var GETsliders = new XMLHttpRequest();
@@ -59,7 +60,7 @@ window.addEventListener('load', (event) => { //receiving data from server and sy
             });
         }
     }
-});
+};
 
 let arrS = [];//array of dynamic styles for slider color
 sliders.forEach(element => {

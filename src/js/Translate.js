@@ -48,7 +48,7 @@ function generateModes(array) {
     let hrNode = document.createElement("hr");
     hrNode.className = "borderLine";
     ModeSelectorsPlace.appendChild(hrNode)
-    
+    sliderInit()
 }
 
 
